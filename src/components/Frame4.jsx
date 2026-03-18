@@ -1,0 +1,1000 @@
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import Header from './Header'
+
+// Assets for the "Запчасти" page
+import compressorAirFilterImg from '../frontend/images/frame4/compressor-air-filter-500x500-1-1.jpg 1.png'
+import oilFilterImg from '../frontend/images/frame4/oil-filter.jpg 1.png'
+import oilSeparatorImg from '../frontend/images/frame4/oil-separator.jpg 1.png'
+import bolaiteOilImg from '../frontend/images/frame4/bolaite-oil.jpg 1.png'
+import bolaiteServiceKitImg from '../frontend/images/frame4/Bolaite-service-kit.jpg 1.png'
+import airPipingImg from '../frontend/images/frame4/air-piping.jpg 1.png'
+import heroFactoryImg from '../frontend/images/frame4/image 3.png'
+
+const DESIGN_WIDTH = 1920
+const DESIGN_HEIGHT = 4315
+
+const PageWrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+`
+
+const ScrollSpacer = styled.div`
+  width: 1px;
+  visibility: hidden;
+  pointer-events: none;
+  height: ${({ $scale }) => DESIGN_HEIGHT * $scale}px;
+`
+
+const ScalableContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${DESIGN_WIDTH}px;
+  height: ${DESIGN_HEIGHT}px;
+  transform-origin: top left;
+  transform: scale(${({ $scale }) => $scale});
+`
+
+const StyledFrame4 = styled.div`
+  width: ${DESIGN_WIDTH}px;
+  height: ${DESIGN_HEIGHT}px;
+  position: relative;
+  background: white;
+`
+
+const StyledInnerHorizontalHeader = styled.div`
+  position: absolute;
+  left: -149px;
+  top: 15px;
+  width: 2211px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 10;
+  pointer-events: none;
+`
+const StyledInnerHorizontalHeader2 = styled.div`
+  position: absolute;
+  left: -149px;
+  top: 90px;
+  width: 2211px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 10;
+  pointer-events: none;
+`
+
+const StyledInnerHorizontalPul = styled.div`
+  position: absolute;
+  left: 79px;
+  top: 1860px;
+  width: 1761px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 15;
+  pointer-events: none;
+`
+
+const StyledInnerHorizontalPul2 = styled.div`
+  position: absolute;
+  left: 0px;
+  top: 2158px;
+  width: 1951px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 15;
+  pointer-events: none;
+`
+const StyledInnerHorizontalSec = styled.div`
+  position: absolute;
+  left: 32px;
+  top: 2230px;
+  width: 1858px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 20;
+  pointer-events: none;
+`
+
+const StyledInnerHorizontalSec2 = styled.div`
+  position: absolute;
+  left: 32px;
+  top: 2310px;
+  width: 1858px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 20;
+  pointer-events: none;
+`
+const StyledInnerHorizontalSec3 = styled.div`
+  position: absolute;
+  left: -15px;
+  top: 3230px;
+  width: 1951px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 20;
+  pointer-events: none;
+`
+const StyledInnerHorizontalSec4 = styled.div`
+  position: absolute;
+  left: -15px;
+  top: 4206px;
+  width: 1951px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 20;
+  pointer-events: none;
+`
+
+const StyledTopLine = styled.div`
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 1920px;
+  height: 1.5px;
+  background: #9c9e9d;
+`
+
+const StyledBottomHeaderLine = styled.div`
+  position: absolute;
+  left: 0;
+  top: 90px;
+  width: 1920px;
+  height: 1.5px;
+  background: #9c9e9d;
+`
+
+const StyledInnerVerticalLine = styled.div`
+  position: absolute;
+  left: 80px;
+  top: 1070px;
+  width: 1.5px;
+  height: 2160px;
+  background: #9c9e9d;
+`
+
+const StyledInnerVerticalLine2 = styled.div`
+  position: absolute;
+  left: 1840px;
+  top: 1070px;
+  width: 1.5px;
+  height: 2160px;
+  background: #9c9e9d;
+`
+
+const StyledInnerHorizontal = styled.div`
+  position: absolute;
+  left: 0;
+  top: 1070px;
+  width: 1920px;
+  height: 1.5px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+
+const StyledVerticalMargin = styled.div`
+  position: absolute;
+  left: 31px;
+  width: 1.5px;
+  height: 4315px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+
+const StyledRightMargin = styled.div`
+  position: absolute;
+  left: 1889px;
+  top: 0;
+  width: 1.5px;
+  height: 4315px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+const StyledHeaderDot = styled.div`
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #9C9E9D;
+  border-radius: 50%;
+  z-index: 150;
+`
+
+const StyledVerticalHead = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 550px;
+  width: 1.5px;
+  height: 75px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+
+const StyledVerticalHead2 = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 845px;
+  width: 1.5px;
+  height: 1055px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+
+const StyledVerticalHead3 = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 1119px;
+  width: 1.5px;
+  height: 235px;
+  background: #9c9e9d;
+  z-index: 5;
+`
+const StyledVerticalHead4 = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 1320px;
+  width: 1.5px;
+  height: 75px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+
+const StyledVerticalTop = styled.div`
+  position: absolute;
+  top: 1160px;
+  width: 1.5px;
+  height: 700px;
+  background: #9c9e9d;
+  z-index: 10;
+
+  &.vt-1 { left: 621px; }
+  &.vt-2 { left: 721px; }
+  &.vt-3 { left: 1221px; }
+  &.vt-4 { left: 1295px; }
+`
+
+const StyledVerticalSec = styled.div`
+  position: absolute;
+  top: 2158px;
+  left: 621px;
+  width: 1.5px;
+  height: 1072px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+const StyledVerticalSec2 = styled.div`
+  position: absolute;
+  top: 2158px;
+  left: 721px;
+  width: 1.5px;
+  height: 1302px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+const StyledVerticalSec3 = styled.div`
+  position: absolute;
+  top: 2158px;
+  left: 1221px;
+  width: 1.5px;
+  height: 1072px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+const StyledVerticalSec4 = styled.div`
+  position: absolute;
+  top: 2158px;
+  left: 1295px;
+  width: 1.5px;
+  height: 1072px;
+  background: #9c9e9d;
+  z-index: 10;
+`
+
+const StyledHeroCard = styled.div`
+  position: absolute;
+  left: 880px;
+  top: 259px;
+  width: 960px;
+  height: 771px;
+  overflow: hidden;
+`
+
+const StyledHeroImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+
+const StyledHeroTitle = styled.h1`
+  position: absolute;
+  left: 880px;
+  top: 147px;
+  color: #03043c;
+  font-family: 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  z-index: 10;
+`
+
+const StyledHeroSubtitle = styled.p`
+  position: absolute;
+  left: 885px;
+  top: 206px;
+  color: #000;
+  font-family: 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  font-weight: 500;
+  font-size: 27px;
+`
+
+const StyledWideChoiceTitle = styled.div`
+  position: absolute;
+  left: 79px;
+  top: 570px;
+  color: #c2c2c2;
+  font-family: Inter, sans-serif;
+  font-weight: 100;
+  font-size: 73px;
+`
+
+const StyledWideChoiceText = styled.p`
+  position: absolute;
+  left: 85px;
+  top: 680px;
+  color: #545454;
+  font-family: Inter, sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 1.35;
+`
+
+const StyledContactButtonDot = styled.div`
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border: 1px solid #9C9E9D;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+`
+
+const StyledContactButtonWrapper = styled.a`
+  position: absolute;
+  left: 79px;
+  top: 943px;
+  width: 301px;
+  height: 62px;
+  background: white;
+  color: #131939;
+  font-size: 32px;
+  font-family: Inter;
+  font-weight: 700;
+  border: 1px solid #868686;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 5;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background: #272B37;
+    color: white;
+  }
+`
+
+const StyledCategoryTitle = styled.h2`
+  position: absolute;
+  top: 1173px;
+  color: #585858;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 38px;
+`
+
+const StyledSectionDivider = styled.div`
+  position: absolute;
+  left: 32px;
+  top: 1160px;
+  width: 1858px;
+  height: 1.5px;
+  background: #9C9E9D;
+  z-index: 10;
+`
+const StyledSectionDivider2 = styled.div`
+  position: absolute;
+  left: 32px;
+  top: 1230px;
+  width: 1858px;
+  height: 1.5px;
+  background: #9C9E9D;
+  z-index: 10;
+`
+
+const StyledProductCell = styled.div`
+  position: absolute;
+  clip-path: inset(0);
+  z-index: 1;
+`
+
+const StyledProductImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  outline: none;
+  display: block;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+`
+
+const StyledDustPreventionText = styled.p`
+  position: absolute;
+  left: 345px;
+  top: 1898px;
+  color: #b7bec8;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 85px;
+  text-align: center;
+  line-height: 1.1;
+`
+
+const StyledBottomSectionTitle = styled.h2`
+  position: absolute;
+  top: 2250px;
+  color: #585858;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  white-space: nowrap;
+`
+
+const StyledBottomDescription = styled.div`
+  position: absolute;
+  top: 2915px;
+  color: #b5b6bb;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  line-height: 1.25;
+`
+
+const StyledFormTitle = styled.h2`
+  position: absolute;
+  top: 3447px;
+  left: 450px;
+  color: black;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+`
+
+const StyledFormSubtitle = styled.p`
+  position: absolute;
+  top: 3540px;
+  left: 870px;
+  color: #b5b6bb;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+`
+
+const StyledFormWrapper = styled.form`
+  position: absolute;
+  top: 3830px;
+  left: 262px;
+  width: 1402px;
+  height: 59px;
+`
+
+const StyledFormLine = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${({ $left }) => $left}px;
+  width: 366px;
+  height: 1.5px;
+  background: #9c9e9d;
+`
+
+const StyledFormLabel = styled.label`
+  position: absolute;
+  top: ${({ $top }) => $top}px;
+  left: ${({ $left }) => $left}px;
+  width: 366px;
+  text-align: center;
+  color: black;
+  font-family: Inter, sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+`
+
+const StyledFormInput = styled.input`
+  position: absolute;
+  top: -35px;
+  left: ${({ $left }) => $left !== undefined ? $left : 0}px;
+  width: 366px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: Inter, sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+  text-align: center;
+`
+
+const StyledFieldError = styled(motion.div)`
+  position: absolute;
+  width: 366px;
+  text-align: center;
+  color: #c62828;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 16px;
+  background: rgba(244, 67, 54, 0.08);
+  border-radius: 8px;
+  border-left: 4px solid #c62828;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+`
+
+const StyledSubmitBlock = styled.div`
+  position: absolute;
+  top: 4010px;
+  left: 807px;
+  width: 301px;
+  height: 62px;
+`
+
+const StyledSubmitDot = styled.div`
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background: #272B37;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+`
+
+const StyledSubmitInner = styled.button`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border: 1px solid #878787;
+  border-radius: 0 8px 8px 8px;
+  color: black;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: color 0.35s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #272B37;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 0;
+    border-radius: 0 8px 8px 8px;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &:hover {
+    color: white;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+`
+
+const StyledSubmitBorder = styled.div``
+
+const StyledFooterAddress = styled.address`
+  position: absolute;
+  top: 4230px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-family: Inter, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  text-align: center;
+  font-style: normal;
+`
+
+const API_URL = import.meta.env.VITE_API_URL || ''
+
+const capitalizeFirst = (str) => {
+  if (!str || str.length === 0) return str
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+const formatPhoneNumber = (value) => {
+  const digits = value.replace(/\D/g, '')
+  if (digits.length === 0) return '+7'
+  let d = digits
+  if (d[0] === '8') d = '7' + d.slice(1)
+  else if (d[0] !== '7') d = '7' + d
+  d = d.slice(0, 11)
+  if (d.length <= 1) return '+' + d
+  if (d.length <= 3) return `+7 (${d.slice(1)}`
+  if (d.length <= 4) return `+7 (${d.slice(1, 4)})`
+  if (d.length <= 7) return `+7 (${d.slice(1, 4)}) ${d.slice(4)}`
+  if (d.length <= 9) return `+7 (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7)}`
+  return `+7 (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9, 11)}`
+}
+
+const Frame4 = () => {
+  const [scale, setScale] = useState(() => window.innerWidth / DESIGN_WIDTH)
+  const [formName, setFormName] = useState('')
+  const [formPhone, setFormPhone] = useState('+7')
+  const [formEmail, setFormEmail] = useState('')
+  const [formStatus, setFormStatus] = useState(null)
+  const [formFieldError, setFormFieldError] = useState(null)
+
+  useEffect(() => {
+    const updateScale = () => setScale(window.innerWidth / DESIGN_WIDTH)
+    window.addEventListener('resize', updateScale)
+    updateScale()
+    return () => window.removeEventListener('resize', updateScale)
+  }, [])
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhoneNumber(e.target.value)
+    setFormPhone(formatted)
+    setFormFieldError(null)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setFormFieldError(null)
+    if (!formName || formName.length < 2) {
+      setFormFieldError('name')
+      return
+    }
+    const phoneDigits = formPhone.replace(/\D/g, '')
+    if (phoneDigits.length < 11) {
+      setFormFieldError('phone')
+      return
+    }
+    if (formEmail && !formEmail.includes('@')) {
+      setFormFieldError('email')
+      return
+    }
+    setFormStatus('sending')
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formName,
+          phone: formPhone,
+          email: formEmail
+        })
+      })
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && (data.success !== false)) {
+        setFormStatus('success')
+        setFormName('')
+        setFormPhone('+7')
+        setFormEmail('')
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    }
+  }
+
+  return (
+    <PageWrapper>
+      <ScrollSpacer $scale={scale} />
+      <ScalableContent $scale={scale}>
+        <StyledFrame4>
+          <Header />
+          <StyledVerticalMargin />
+          <StyledRightMargin />
+          <StyledTopLine />
+          <StyledBottomHeaderLine />
+          <StyledInnerVerticalLine />
+          <StyledInnerHorizontal />
+          <StyledInnerHorizontalHeader/>
+          <StyledInnerHorizontalHeader2/>
+          <StyledVerticalHead />
+          <StyledVerticalHead2 />
+          <StyledVerticalHead3 />
+          <StyledVerticalHead4 />
+
+          <StyledHeaderDot style={{ left: 28, top: 12 }} />
+          <StyledHeaderDot style={{ left: 28, top: 88 }} />
+          <StyledHeaderDot style={{ left: 547, top: 12 }} />
+          <StyledHeaderDot style={{ left: 547, top: 88 }} />
+          <StyledHeaderDot style={{ left: 842, top: 12 }} />
+          <StyledHeaderDot style={{ left: 842, top: 88 }} />
+          <StyledHeaderDot style={{ left: 1116, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1116, top: 88 }} />
+          <StyledHeaderDot style={{ left: 1317, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1317, top: 88 }} />
+          <StyledHeaderDot style={{ left: 1886, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1886, top: 88 }} />
+          <StyledHeaderDot style={{ left: 28, top: 1067 }} />
+          <StyledHeaderDot style={{ left: 1886, top: 1067 }} />
+          <StyledSectionDivider2 />
+          <StyledInnerVerticalLine2 />
+          <StyledVerticalTop className="vt-1" />
+          <StyledVerticalTop className="vt-2" />
+          <StyledVerticalTop className="vt-3" />
+          <StyledVerticalTop className="vt-4" />
+          <StyledInnerHorizontalPul />
+          <StyledInnerHorizontalPul2 />
+          <StyledHeaderDot style={{ left: 28, top: 2155 }} />
+          <StyledHeaderDot style={{ left: 1886, top: 2155 }} />
+          <StyledInnerHorizontalSec />
+          <StyledInnerHorizontalSec2 />
+          <StyledVerticalSec />
+          <StyledVerticalSec2 />
+          <StyledVerticalSec3 />
+          <StyledVerticalSec4 />
+          <StyledInnerHorizontalSec3 />
+          <StyledHeaderDot style={{ left: 28, top: 3227 }} />
+          <StyledHeaderDot style={{ left: 1886, top: 3227 }} />
+          <StyledInnerHorizontalSec4 />
+          <StyledHeaderDot style={{ left: 28, top: 4203 }} />
+          <StyledHeaderDot style={{ left: 1886, top: 4203 }} />
+
+          <StyledHeroTitle>Оригинальные запчасти Bolaite</StyledHeroTitle>
+          <StyledHeroSubtitle>Первоклассные запчасти для воздушных компрессоров</StyledHeroSubtitle>
+
+          <StyledHeroCard>
+            <StyledHeroImage src={heroFactoryImg} alt="Производство Bolaite" />
+          </StyledHeroCard>
+
+          <StyledWideChoiceTitle>ШИРОКИЙ ВЫБОР</StyledWideChoiceTitle>
+          <StyledWideChoiceText>
+            оригинальных запчастей и масел
+            <br />
+            для компрессоров Bolaite
+            <br />
+            позволяет не беспокоиться о поиске необходимых деталей
+          </StyledWideChoiceText>
+
+          <StyledContactButtonWrapper href="#request-form">
+            <StyledContactButtonDot />
+            СВЯЗАТЬСЯ
+          </StyledContactButtonWrapper>
+
+          <StyledCategoryTitle style={{ left: 147 }}>МАСЛЯНЫЕ ФИЛЬТРЫ</StyledCategoryTitle>
+          <StyledCategoryTitle style={{ left: 745 }}>ВОЗДУШНЫЕ ФИЛЬТРЫ</StyledCategoryTitle>
+          <StyledCategoryTitle style={{ left: 1370 }}>МАСЛООТДЕЛИТЕЛИ</StyledCategoryTitle>
+
+         
+
+          <StyledProductCell style={{ top: 1231, left: 82, width: 541, height: 629 }}>
+            <StyledProductImage src={compressorAirFilterImg} alt="Фильтр воздушный" />
+          </StyledProductCell>
+          <StyledProductCell style={{ top: 1231, left: 721, width: 500, height: 630 }}>
+            <StyledProductImage src={oilFilterImg} alt="Масляный фильтр" />
+          </StyledProductCell>
+          <StyledProductCell style={{ top: 1231, left: 1294, width: 545, height: 630 }}>
+            <StyledProductImage src={oilSeparatorImg} alt="Маслоотделитель" />
+          </StyledProductCell>
+
+          <StyledDustPreventionText>
+            Предотвращение попадания
+            <br />
+            пыли и грязи
+          </StyledDustPreventionText>
+
+          <StyledSectionDivider $top={1860} />
+          <StyledSectionDivider $top={2158} />
+          <StyledSectionDivider $top={2230} />
+          <StyledSectionDivider $top={2310} />
+
+          <StyledBottomSectionTitle style={{ left: 160 }}>
+            СМАЗОЧНЫЕ МАТЕРИАЛЫ
+          </StyledBottomSectionTitle>
+          <StyledBottomSectionTitle style={{ left: 740, fontSize: 27 }}>
+            КОМПЛЕКТ ДЛЯ ОБСЛУЖИВАНИЯ
+          </StyledBottomSectionTitle>
+          <StyledBottomSectionTitle style={{ left: 1453 }}>
+            ВОЗДУХОВОДЫ
+          </StyledBottomSectionTitle>
+
+          <StyledProductCell style={{ top: 2340, left: 85, width: 531, height: 541 }}>
+            <StyledProductImage src={bolaiteOilImg} alt="Масло Bolaite" />
+          </StyledProductCell>
+          <StyledProductCell style={{ top: 2350, left: 721, width: 500, height: 530 }}>
+            <StyledProductImage src={bolaiteServiceKitImg} alt="Сервисный комплект Bolaite" />
+          </StyledProductCell>
+          <StyledProductCell style={{ top: 2350, left: 1295, width: 545, height: 530 }}>
+            <StyledProductImage src={airPipingImg} alt="Система воздуховодов" />
+          </StyledProductCell>
+
+          <StyledBottomDescription style={{ left: 110 }}>
+            Защита роторов,
+            <br />
+            теплорегуляция,
+            <br />
+            герметизация,
+            <br />
+            поглощение вредных веществ
+          </StyledBottomDescription>
+
+          <StyledBottomDescription style={{ left: 737 }}>
+            Поставка в едином комплекте
+            <br />
+            с гарантией качества
+          </StyledBottomDescription>
+
+          <StyledBottomDescription style={{ left: 1327 }}>
+            Система воздуховодов
+            <br />
+            Алюминий, нержавеющая сталь
+          </StyledBottomDescription>
+
+          <StyledFormTitle id="request-form">ОСТАВИТЬ ЗАЯВКУ</StyledFormTitle>
+
+          <StyledFormSubtitle>
+            Поможем подобрать компрессор,
+            <br />
+            соответствующий вашим запросам
+          </StyledFormSubtitle>
+
+          <StyledFormWrapper onSubmit={handleSubmit} aria-label="Форма заявки">
+            <StyledFormLine $left={0} />
+            <StyledFormLine $left={520} />
+            <StyledFormLine $left={1030} />
+
+            <StyledFormLabel htmlFor="name-input" $left={0} $top={10}>
+              ИМЯ
+            </StyledFormLabel>
+            <StyledFormInput
+              id="name-input"
+              type="text"
+              value={formName}
+              onChange={(e) => { setFormName(capitalizeFirst(e.target.value)); setFormFieldError(null) }}
+              aria-label="Имя"
+              $left={0}
+            />
+
+            <StyledFormLabel htmlFor="phone-input" $left={520} $top={10}>
+              НОМЕР ТЕЛЕФОНА
+            </StyledFormLabel>
+            <StyledFormInput
+              id="phone-input"
+              type="tel"
+              value={formPhone}
+              onChange={handlePhoneChange}
+              aria-label="Номер телефона"
+              $left={520}
+            />
+
+            <StyledFormLabel htmlFor="email-input" $left={1030} $top={10}>
+              ЭЛЕКТРОННАЯ ПОЧТА
+            </StyledFormLabel>
+            <StyledFormInput
+              id="email-input"
+              type="email"
+              value={formEmail}
+              onChange={(e) => { setFormEmail(e.target.value); setFormFieldError(null) }}
+              aria-label="Электронная почта"
+              $left={1030}
+            />
+
+            {formFieldError === 'name' && (
+              <StyledFieldError
+                style={{ left: 0, top: -55 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                Введите имя
+              </StyledFieldError>
+            )}
+            {formFieldError === 'phone' && (
+              <StyledFieldError
+                style={{ left: 520, top: -55 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                Введите корректный номер телефона
+              </StyledFieldError>
+            )}
+            {formFieldError === 'email' && (
+              <StyledFieldError
+                style={{ left: 1030, top: -55 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                Некорректный адрес почты
+              </StyledFieldError>
+            )}
+          </StyledFormWrapper>
+
+          <StyledSubmitBlock>
+            <StyledSubmitDot />
+            <StyledSubmitInner type="submit" onClick={handleSubmit}>
+              <span>ОТПРАВИТЬ</span>
+            </StyledSubmitInner>
+          </StyledSubmitBlock>
+
+          {formStatus === 'success' && (
+            <div
+              style={{
+                position: 'absolute',
+                top: 4090,
+                left: 262,
+                color: '#4CAF50',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: 18
+              }}
+            >
+              Заявка отправлена!
+            </div>
+          )}
+          {formStatus === 'error' && (
+            <div
+              style={{
+                position: 'absolute',
+                top: 4090,
+                left: 262,
+                color: '#f44336',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: 18
+              }}
+            >
+              Ошибка. Попробуйте позже.
+            </div>
+          )}
+
+          <StyledFooterAddress>
+            телефон +7 (395) 297-90-37
+            <br />
+            почта: Office@ntechnics.ru
+            <br />
+            адрес: Иркутск, Трилиссера 87
+          </StyledFooterAddress>
+        </StyledFrame4>
+      </ScalableContent>
+    </PageWrapper>
+  )
+}
+
+export { Frame4 as default }
+
+
