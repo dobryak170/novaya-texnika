@@ -7,6 +7,7 @@ import CatalogPage from './components/CatalogPage'
 import ProductsPage from './components/ProductsPage'
 import OilFreePage from './components/OilFreePage'
 import PortablePage from './components/PortablePage'
+import AboutPage from './components/AboutPage'
 import './styles/responsive.css'
 
 const GlobalStyle = createGlobalStyle`
@@ -59,6 +60,7 @@ function App() {
         <Route path="/products/oil-free" element={<OilFreePage/>} />
         <Route path="/products" element={<ProductsPage/>} />
         <Route path="/products/portable" element={<PortablePage/>} />
+        <Route path="/about" element={<AboutPage />} />
         
       </Routes>
     </BrowserRouter>
