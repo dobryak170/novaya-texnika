@@ -5,6 +5,7 @@ import Frame10 from './components/Frame10'
 import Frame4 from './components/Frame4'
 import CatalogPage from './components/CatalogPage'
 import ProductsPage from './components/ProductsPage'
+import ScrewCompressorsPage from './components/ScrewCompressorsPage'
 import OilFreePage from './components/OilFreePage'
 import PortablePage from './components/PortablePage'
 import AboutPage from './components/AboutPage'
@@ -57,6 +58,7 @@ function App() {
         <Route path="/" element={<Frame10 />} />
         <Route path="/parts" element={<Frame4 />} />
         <Route path="/products/air-treatment" element={<CatalogPage/>} />
+        <Route path="/products/oil-injected" element={<ScrewCompressorsPage />} />
         <Route path="/products/oil-free" element={<OilFreePage/>} />
         <Route path="/products" element={<ProductsPage/>} />
         <Route path="/products/portable" element={<PortablePage/>} />

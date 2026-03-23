@@ -107,18 +107,18 @@ const StyledLineEndDot = styled.div`
   border-radius: 50%;
   z-index: 150;
 
-  &.v3-top { left: 544px; top: 16px; }
-  &.v3-bottom { left: 544px; top: 92px; }
-  &.l1-top { left: 840px; top: 16px; }
-  &.l1-bottom { left: 840px; top: 92px; }
-  &.l2-top { left: 1115px; top: 16px; }
-  &.l2-bottom { left: 1115px; top: 92px; }
-  &.l3-top { left: 1315px; top: 16px; }
-  &.l3-bottom { left: 1315px; top: 92px; }
-  &.left-top { left: 15px; top: 16px; }
-  &.left-bottom { left: 15px; top: 92px; }
-  &.right-top { left: 1899px; top: 16px; }
-  &.right-bottom { left: 1899px; top: 92px; }
+  &.v3-top { left: 544px; top: 15px; }
+  &.v3-bottom { left: 544px; top: 91px; }
+  &.l1-top { left: 840px; top: 15px; }
+  &.l1-bottom { left: 840px; top: 91px; }
+  &.l2-top { left: 1115px; top: 15px; }
+  &.l2-bottom { left: 1115px; top: 91px; }
+  &.l3-top { left: 1315px; top: 15px; }
+  &.l3-bottom { left: 1315px; top: 91px; }
+  &.left-top { left: 15px; top: 15px; }
+  &.left-bottom { left: 15px; top: 91px; }
+  &.right-top { left: 1899px; top: 15px; }
+  &.right-bottom { left: 1899px; top: 91px; }
   &.rect9-left { left: 15px; top: 2144px; }
   &.rect9-right { left: 1899px; top: 2145px; }
   &.rect9-bottom-left { left: 15px; top: 3224px; }

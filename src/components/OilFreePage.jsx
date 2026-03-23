@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import Header from './Header'
 
 const DESIGN_WIDTH = 1920
@@ -165,10 +165,12 @@ const StyledContactBoxVLine = styled.div`
 
 const StyledDot = styled.div`
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #6f6f6f;
-  border-radius: 3px;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #9c9e9d;
+  border-radius: 50%;
   z-index: 150;
 `
 
@@ -225,23 +227,19 @@ const StyledCategoryList = styled.div`
   z-index: 11;
 `
 
-const StyledCategoryItem = styled(Link)`
+const StyledCategoryItem = styled.span`
   font-family: Inter, sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: #575757;
   text-align: right;
   line-height: 1;
-  height: 66px;
+  height: 69px;
   display: flex;
   align-items: flex-start;
-  text-decoration: none;
   white-space: nowrap;
-  transition: color 0.2s ease;
-  cursor: pointer;
 
-  &:hover { color: #000f46; }
-  &.active { color: #000f46; border-bottom: 1.5px solid #000f46; padding-bottom: 2px; }
+  &.active { color: #000f46; }
 `
 
 // ─── Equipment Labels ─────────────────────────────────────────────────────────
@@ -606,26 +604,26 @@ const StyledFooterText = styled.p`
 // ─── Dots ─────────────────────────────────────────────────────────────────────
 
 const DOT_POSITIONS = [
-  { top: 12,   left: 29   },
-  { top: 87,   left: 29   },
-  { top: 12,   left: 546  },
-  { top: 87,   left: 546  },
-  { top: 13,   left: 841  },
-  { top: 87,   left: 841  },
-  { top: 13,   left: 1116 },
-  { top: 86,   left: 1116 },
-  { top: 13,   left: 1316 },
-  { top: 87,   left: 1316 },
-  { top: 13,   left: 1886 },
-  { top: 87,   left: 1886 },
-  { top: 563,  left: 546  },
-  { top: 628,  left: 841  },
-  { top: 698,  left: 1088 },
-  { top: 768,  left: 1256 },
-  { top: 992,  left: 546  },
-  { top: 1061, left: 546  },
-  { top: 992,  left: 842  },
-  { top: 1061, left: 842  },
+  { top: 11,   left: 28   },
+  { top: 86,   left: 28   },
+  { top: 11,   left: 545  },
+  { top: 86,   left: 545  },
+  { top: 12,   left: 840  },
+  { top: 86,   left: 840  },
+  { top: 12,   left: 1115 },
+  { top: 85,   left: 1115 },
+  { top: 12,   left: 1315 },
+  { top: 86,   left: 1315 },
+  { top: 12,   left: 1885 },
+  { top: 86,   left: 1885 },
+  { top: 562,  left: 545  },
+  { top: 627,  left: 841  },
+  { top: 697,  left: 1088 },
+  { top: 767,  left: 1256 },
+  { top: 991,  left: 545  },
+  { top: 1060, left: 545  },
+  { top: 991,  left: 841  },
+  { top: 1060, left: 841  },
 ]
 
 const IMG = (name) => `/src/frontend/images/frame11/${name}`
@@ -734,16 +732,16 @@ const OilFreePage = () => {
 
           {/* ── Category Nav ── */}
           <StyledCategoryList>
-            <StyledCategoryItem to="/products" className={pathname === '/products' ? 'active' : ''}>
+            <StyledCategoryItem className={pathname === '/products/oil-injected' ? 'active' : ''}>
               ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem to="/products/oil-free" className={pathname === '/products/oil-free' ? 'active' : ''}>
+            <StyledCategoryItem className={pathname === '/products/oil-free' ? 'active' : ''}>
               БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem to="/products/portable" className={pathname === '/products/portable' ? 'active' : ''}>
+            <StyledCategoryItem className={pathname === '/products/portable' ? 'active' : ''}>
               ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem to="/products/air-treatment" className={pathname === '/products/air-treatment' ? 'active' : ''}>
+            <StyledCategoryItem className={pathname === '/products/air-treatment' ? 'active' : ''}>
               ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА
             </StyledCategoryItem>
           </StyledCategoryList>

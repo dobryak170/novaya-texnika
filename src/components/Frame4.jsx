@@ -502,7 +502,7 @@ const StyledFormWrapper = styled.form`
   top: 3830px;
   left: 262px;
   width: 1402px;
-  height: 59px;
+  min-height: 59px;
 `
 
 const StyledFormLine = styled.div`
@@ -663,7 +663,7 @@ const Frame4 = () => {
   const [formPhone, setFormPhone] = useState('+7')
   const [formEmail, setFormEmail] = useState('')
   const [formStatus, setFormStatus] = useState(null)
-  const [formFieldError, setFormFieldError] = useState(null)
+  const [formFieldErrors, setFormFieldErrors] = useState({ name: false, phone: false, email: false })
 
   useEffect(() => {
     const updateScale = () => setScale(window.innerWidth / DESIGN_WIDTH)
@@ -675,25 +675,17 @@ const Frame4 = () => {
   const handlePhoneChange = (e) => {
     const formatted = formatPhoneNumber(e.target.value)
     setFormPhone(formatted)
-    setFormFieldError(null)
+    setFormFieldErrors((prev) => ({ ...prev, phone: false }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setFormFieldError(null)
-    if (!formName || formName.length < 2) {
-      setFormFieldError('name')
-      return
-    }
+    const nameErr = !formName || formName.length < 2
     const phoneDigits = formPhone.replace(/\D/g, '')
-    if (phoneDigits.length < 11) {
-      setFormFieldError('phone')
-      return
-    }
-    if (formEmail && !formEmail.includes('@')) {
-      setFormFieldError('email')
-      return
-    }
+    const phoneErr = phoneDigits.length < 11
+    const emailErr = formEmail && !formEmail.includes('@')
+    setFormFieldErrors({ name: nameErr, phone: phoneErr, email: emailErr })
+    if (nameErr || phoneErr || emailErr) return
     setFormStatus('sending')
     try {
       const res = await fetch(`${API_URL}/api/contact`, {
@@ -738,18 +730,18 @@ const Frame4 = () => {
           <StyledVerticalHead3 />
           <StyledVerticalHead4 />
 
-          <StyledHeaderDot style={{ left: 28, top: 12 }} />
-          <StyledHeaderDot style={{ left: 28, top: 88 }} />
-          <StyledHeaderDot style={{ left: 547, top: 12 }} />
-          <StyledHeaderDot style={{ left: 547, top: 88 }} />
-          <StyledHeaderDot style={{ left: 842, top: 12 }} />
-          <StyledHeaderDot style={{ left: 842, top: 88 }} />
-          <StyledHeaderDot style={{ left: 1116, top: 12 }} />
-          <StyledHeaderDot style={{ left: 1116, top: 88 }} />
-          <StyledHeaderDot style={{ left: 1317, top: 12 }} />
-          <StyledHeaderDot style={{ left: 1317, top: 88 }} />
-          <StyledHeaderDot style={{ left: 1886, top: 12 }} />
-          <StyledHeaderDot style={{ left: 1886, top: 88 }} />
+          <StyledHeaderDot style={{ left: 27, top: 11 }} />
+          <StyledHeaderDot style={{ left: 27, top: 87 }} />
+          <StyledHeaderDot style={{ left: 546, top: 11 }} />
+          <StyledHeaderDot style={{ left: 546, top: 87 }} />
+          <StyledHeaderDot style={{ left: 841, top: 11 }} />
+          <StyledHeaderDot style={{ left: 841, top: 87 }} />
+          <StyledHeaderDot style={{ left: 1115, top: 11 }} />
+          <StyledHeaderDot style={{ left: 1115, top: 87 }} />
+          <StyledHeaderDot style={{ left: 1316, top: 11 }} />
+          <StyledHeaderDot style={{ left: 1316, top: 87 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 11 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 87 }} />
           <StyledHeaderDot style={{ left: 28, top: 1067 }} />
           <StyledHeaderDot style={{ left: 1886, top: 1067 }} />
           <StyledSectionDivider2 />
@@ -885,7 +877,7 @@ const Frame4 = () => {
               id="name-input"
               type="text"
               value={formName}
-              onChange={(e) => { setFormName(capitalizeFirst(e.target.value)); setFormFieldError(null) }}
+              onChange={(e) => { setFormName(capitalizeFirst(e.target.value)); setFormFieldErrors((prev) => ({ ...prev, name: false })) }}
               aria-label="Имя"
               $left={0}
             />
@@ -909,14 +901,14 @@ const Frame4 = () => {
               id="email-input"
               type="email"
               value={formEmail}
-              onChange={(e) => { setFormEmail(e.target.value); setFormFieldError(null) }}
+              onChange={(e) => { setFormEmail(e.target.value); setFormFieldErrors((prev) => ({ ...prev, email: false })) }}
               aria-label="Электронная почта"
               $left={1030}
             />
 
-            {formFieldError === 'name' && (
+            {formFieldErrors.name && (
               <StyledFieldError
-                style={{ left: 0, top: -55 }}
+                style={{ left: 0, top: 50 }}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}
@@ -924,9 +916,9 @@ const Frame4 = () => {
                 Введите имя
               </StyledFieldError>
             )}
-            {formFieldError === 'phone' && (
+            {formFieldErrors.phone && (
               <StyledFieldError
-                style={{ left: 520, top: -55 }}
+                style={{ left: 520, top: 50 }}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}
@@ -934,9 +926,9 @@ const Frame4 = () => {
                 Введите корректный номер телефона
               </StyledFieldError>
             )}
-            {formFieldError === 'email' && (
+            {formFieldErrors.email && (
               <StyledFieldError
-                style={{ left: 1030, top: -55 }}
+                style={{ left: 1030, top: 50 }}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}

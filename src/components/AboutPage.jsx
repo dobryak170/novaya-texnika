@@ -167,10 +167,12 @@ const StyledContactBoxVLine = styled.div`
 
 const StyledDot = styled.div`
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #6f6f6f;
-  border-radius: 3px;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #9c9e9d;
+  border-radius: 50%;
   z-index: 150;
 `
 
@@ -565,18 +567,18 @@ const DOT_POSITIONS = [
   { top: 1067, left: 1116 },
   { top: 1001, left: 1316 },
   { top: 1001, left: 1116 },
-  { top: 12,   left: 29   },
-  { top: 87,   left: 29   },
-  { top: 12,   left: 546  },
-  { top: 87,   left: 546  },
-  { top: 13,   left: 841  },
-  { top: 87,   left: 841  },
-  { top: 13,   left: 1116 },
-  { top: 86,   left: 1116 },
-  { top: 13,   left: 1316 },
-  { top: 87,   left: 1316 },
-  { top: 13,   left: 1886 },
-  { top: 87,   left: 1886 },
+  { top: 11,   left: 28   },
+  { top: 86,   left: 28   },
+  { top: 11,   left: 545  },
+  { top: 86,   left: 545  },
+  { top: 12,   left: 840  },
+  { top: 86,   left: 840  },
+  { top: 12,   left: 1115 },
+  { top: 85,   left: 1115 },
+  { top: 12,   left: 1315 },
+  { top: 86,   left: 1315 },
+  { top: 12,   left: 1885 },
+  { top: 86,   left: 1885 },
 ]
 
 const IMG = (name) => `/src/frontend/images/aboutus/${name}`
