@@ -47,33 +47,12 @@ const StyledFrame4 = styled.div`
   background: white;
 `
 
-const StyledInnerHorizontalHeader = styled.div`
-  position: absolute;
-  left: -149px;
-  top: 15px;
-  width: 2211px;
-  height: 1.5px;
-  background: #9c9e9d;
-  z-index: 10;
-  pointer-events: none;
-`
-const StyledInnerHorizontalHeader2 = styled.div`
-  position: absolute;
-  left: -149px;
-  top: 90px;
-  width: 2211px;
-  height: 1.5px;
-  background: #9c9e9d;
-  z-index: 10;
-  pointer-events: none;
-`
-
 const StyledInnerHorizontalPul = styled.div`
   position: absolute;
   left: 79px;
   top: 1860px;
   width: 1761px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 15;
   pointer-events: none;
@@ -84,7 +63,7 @@ const StyledInnerHorizontalPul2 = styled.div`
   left: 0px;
   top: 2158px;
   width: 1951px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 15;
   pointer-events: none;
@@ -94,7 +73,7 @@ const StyledInnerHorizontalSec = styled.div`
   left: 32px;
   top: 2230px;
   width: 1858px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 20;
   pointer-events: none;
@@ -105,7 +84,7 @@ const StyledInnerHorizontalSec2 = styled.div`
   left: 32px;
   top: 2310px;
   width: 1858px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 20;
   pointer-events: none;
@@ -115,7 +94,7 @@ const StyledInnerHorizontalSec3 = styled.div`
   left: -15px;
   top: 3230px;
   width: 1951px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 20;
   pointer-events: none;
@@ -125,7 +104,7 @@ const StyledInnerHorizontalSec4 = styled.div`
   left: -15px;
   top: 4206px;
   width: 1951px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 20;
   pointer-events: none;
@@ -136,8 +115,10 @@ const StyledTopLine = styled.div`
   left: 0;
   top: 15px;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
+  z-index: 50;
+  pointer-events: none;
 `
 
 const StyledBottomHeaderLine = styled.div`
@@ -145,15 +126,17 @@ const StyledBottomHeaderLine = styled.div`
   left: 0;
   top: 90px;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
+  z-index: 50;
+  pointer-events: none;
 `
 
 const StyledInnerVerticalLine = styled.div`
   position: absolute;
   left: 80px;
   top: 1070px;
-  width: 1.5px;
+  width: 1px;
   height: 2160px;
   background: #9c9e9d;
 `
@@ -162,7 +145,7 @@ const StyledInnerVerticalLine2 = styled.div`
   position: absolute;
   left: 1840px;
   top: 1070px;
-  width: 1.5px;
+  width: 1px;
   height: 2160px;
   background: #9c9e9d;
 `
@@ -172,28 +155,31 @@ const StyledInnerHorizontal = styled.div`
   left: 0;
   top: 1070px;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
   z-index: 10;
 `
 
 const StyledVerticalMargin = styled.div`
   position: absolute;
-  left: 31px;
-  width: 1.5px;
+  left: 30px;
+  top: 0;
+  width: 1px;
   height: 4315px;
   background: #9c9e9d;
-  z-index: 10;
+  z-index: 50;
+  pointer-events: none;
 `
 
 const StyledRightMargin = styled.div`
   position: absolute;
-  left: 1889px;
+  left: 1888px;
   top: 0;
-  width: 1.5px;
+  width: 1px;
   height: 4315px;
   background: #9c9e9d;
-  z-index: 10;
+  z-index: 50;
+  pointer-events: none;
 `
 const StyledHeaderDot = styled.div`
   position: absolute;
@@ -209,8 +195,8 @@ const StyledHeaderDot = styled.div`
 const StyledVerticalHead = styled.div`
   position: absolute;
   top: 16px;
-  left: 550px;
-  width: 1.5px;
+  left: 548px;
+  width: 1px;
   height: 75px;
   background: #9c9e9d;
   z-index: 10;
@@ -219,8 +205,8 @@ const StyledVerticalHead = styled.div`
 const StyledVerticalHead2 = styled.div`
   position: absolute;
   top: 16px;
-  left: 845px;
-  width: 1.5px;
+  left: 844px;
+  width: 1px;
   height: 1055px;
   background: #9c9e9d;
   z-index: 10;
@@ -229,8 +215,8 @@ const StyledVerticalHead2 = styled.div`
 const StyledVerticalHead3 = styled.div`
   position: absolute;
   top: 16px;
-  left: 1119px;
-  width: 1.5px;
+  left: 1118px;
+  width: 1px;
   height: 235px;
   background: #9c9e9d;
   z-index: 5;
@@ -238,8 +224,8 @@ const StyledVerticalHead3 = styled.div`
 const StyledVerticalHead4 = styled.div`
   position: absolute;
   top: 16px;
-  left: 1320px;
-  width: 1.5px;
+  left: 1318px;
+  width: 1px;
   height: 75px;
   background: #9c9e9d;
   z-index: 10;
@@ -248,7 +234,7 @@ const StyledVerticalHead4 = styled.div`
 const StyledVerticalTop = styled.div`
   position: absolute;
   top: 1160px;
-  width: 1.5px;
+  width: 1px;
   height: 700px;
   background: #9c9e9d;
   z-index: 10;
@@ -263,7 +249,7 @@ const StyledVerticalSec = styled.div`
   position: absolute;
   top: 2158px;
   left: 621px;
-  width: 1.5px;
+  width: 1px;
   height: 1072px;
   background: #9c9e9d;
   z-index: 10;
@@ -272,7 +258,7 @@ const StyledVerticalSec2 = styled.div`
   position: absolute;
   top: 2158px;
   left: 721px;
-  width: 1.5px;
+  width: 1px;
   height: 1302px;
   background: #9c9e9d;
   z-index: 10;
@@ -281,7 +267,7 @@ const StyledVerticalSec3 = styled.div`
   position: absolute;
   top: 2158px;
   left: 1221px;
-  width: 1.5px;
+  width: 1px;
   height: 1072px;
   background: #9c9e9d;
   z-index: 10;
@@ -290,7 +276,7 @@ const StyledVerticalSec4 = styled.div`
   position: absolute;
   top: 2158px;
   left: 1295px;
-  width: 1.5px;
+  width: 1px;
   height: 1072px;
   background: #9c9e9d;
   z-index: 10;
@@ -408,7 +394,7 @@ const StyledSectionDivider = styled.div`
   left: 32px;
   top: 1160px;
   width: 1858px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 10;
 `
@@ -417,7 +403,7 @@ const StyledSectionDivider2 = styled.div`
   left: 32px;
   top: 1230px;
   width: 1858px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 10;
 `
@@ -510,7 +496,7 @@ const StyledFormLine = styled.div`
   top: 0;
   left: ${({ $left }) => $left}px;
   width: 366px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
 `
 
@@ -723,27 +709,25 @@ const Frame4 = () => {
           <StyledBottomHeaderLine />
           <StyledInnerVerticalLine />
           <StyledInnerHorizontal />
-          <StyledInnerHorizontalHeader/>
-          <StyledInnerHorizontalHeader2/>
           <StyledVerticalHead />
           <StyledVerticalHead2 />
           <StyledVerticalHead3 />
           <StyledVerticalHead4 />
 
-          <StyledHeaderDot style={{ left: 27, top: 11 }} />
-          <StyledHeaderDot style={{ left: 27, top: 87 }} />
-          <StyledHeaderDot style={{ left: 546, top: 11 }} />
-          <StyledHeaderDot style={{ left: 546, top: 87 }} />
-          <StyledHeaderDot style={{ left: 841, top: 11 }} />
-          <StyledHeaderDot style={{ left: 841, top: 87 }} />
-          <StyledHeaderDot style={{ left: 1115, top: 11 }} />
-          <StyledHeaderDot style={{ left: 1115, top: 87 }} />
-          <StyledHeaderDot style={{ left: 1316, top: 11 }} />
-          <StyledHeaderDot style={{ left: 1316, top: 87 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 11 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 87 }} />
-          <StyledHeaderDot style={{ left: 28, top: 1067 }} />
-          <StyledHeaderDot style={{ left: 1886, top: 1067 }} />
+          <StyledHeaderDot style={{ left: 27, top: 12 }} />
+          <StyledHeaderDot style={{ left: 27, top: 86 }} />
+          <StyledHeaderDot style={{ left: 545, top: 12 }} />
+          <StyledHeaderDot style={{ left: 545, top: 86 }} />
+          <StyledHeaderDot style={{ left: 840, top: 12 }} />
+          <StyledHeaderDot style={{ left: 840, top: 86 }} />
+          <StyledHeaderDot style={{ left: 1115, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1115, top: 86 }} />
+          <StyledHeaderDot style={{ left: 1315, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1315, top: 86 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 86 }} />
+          <StyledHeaderDot style={{ left: 27, top: 1067 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 1067 }} />
           <StyledSectionDivider2 />
           <StyledInnerVerticalLine2 />
           <StyledVerticalTop className="vt-1" />
@@ -752,8 +736,8 @@ const Frame4 = () => {
           <StyledVerticalTop className="vt-4" />
           <StyledInnerHorizontalPul />
           <StyledInnerHorizontalPul2 />
-          <StyledHeaderDot style={{ left: 28, top: 2155 }} />
-          <StyledHeaderDot style={{ left: 1886, top: 2155 }} />
+          <StyledHeaderDot style={{ left: 27, top: 2155 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 2155 }} />
           <StyledInnerHorizontalSec />
           <StyledInnerHorizontalSec2 />
           <StyledVerticalSec />
@@ -761,11 +745,11 @@ const Frame4 = () => {
           <StyledVerticalSec3 />
           <StyledVerticalSec4 />
           <StyledInnerHorizontalSec3 />
-          <StyledHeaderDot style={{ left: 28, top: 3227 }} />
-          <StyledHeaderDot style={{ left: 1886, top: 3227 }} />
+          <StyledHeaderDot style={{ left: 27, top: 3227 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 3227 }} />
           <StyledInnerHorizontalSec4 />
-          <StyledHeaderDot style={{ left: 28, top: 4203 }} />
-          <StyledHeaderDot style={{ left: 1886, top: 4203 }} />
+          <StyledHeaderDot style={{ left: 27, top: 4203 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 4203 }} />
 
           <StyledHeroTitle>Оригинальные запчасти Bolaite</StyledHeroTitle>
           <StyledHeroSubtitle>Первоклассные запчасти для воздушных компрессоров</StyledHeroSubtitle>
@@ -987,6 +971,4 @@ const Frame4 = () => {
   )
 }
 
-export { Frame4 as default }
-
-
+export default Frame4

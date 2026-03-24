@@ -109,7 +109,7 @@ const Header = () => {
       <StyledNavItem href="/about" className={`nav-4 nav-item ${activeNav === 'nav-4' ? 'active' : ''}`}><StyledNavText>О НАС</StyledNavText></StyledNavItem>
       <StyledNavItem href="/contacts" className={`nav-5 nav-item ${activeNav === 'nav-5' ? 'active' : ''}`}><StyledNavText>КОНТАКТЫ</StyledNavText></StyledNavItem>
       <StyledContactInfo className="email">Office@ntechnics.ru</StyledContactInfo>
-      <StyledContactInfo className="phone">+7(395) 297-90-37</StyledContactInfo>
+      <StyledContactInfo className="phone">+7 (395) 297-90-37</StyledContactInfo>
     </>
   )
 }

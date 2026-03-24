@@ -31,6 +31,66 @@ const StyledFrame = styled.div`
   background: white;
 `
 
+/* Сетка хедера как на /products/oil-injected */
+const StyledLeftMarginStrip = styled.div`
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  min-height: 1200px;
+  background: #9c9e9d;
+  z-index: 50;
+  pointer-events: none;
+`
+
+const StyledRightMarginStrip = styled.div`
+  position: absolute;
+  left: 1888px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  min-height: 1200px;
+  background: #9c9e9d;
+  z-index: 50;
+  pointer-events: none;
+`
+
+const StyledTopLine = styled.div`
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 1920px;
+  height: 1px;
+  background: #9c9e9d;
+  z-index: 50;
+  pointer-events: none;
+`
+
+const StyledHeaderBottomLine = styled.div`
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 1920px;
+  height: 1px;
+  background: #9c9e9d;
+  z-index: 50;
+  pointer-events: none;
+`
+
+const StyledHeaderVLine = styled.div`
+  position: absolute;
+  width: 1px;
+  background: #9c9e9d;
+  z-index: 100;
+  pointer-events: none;
+
+  &.vl-1 { top: 16px; left: 548px; height: 75px; }
+  &.vl-2 { top: 16px; left: 844px; height: 75px; }
+  &.vl-3 { top: 16px; left: 1118px; height: 75px; }
+  &.vl-4 { top: 16px; left: 1318px; height: 75px; }
+`
+
 const StyledButtonsWrapper = styled.div`
   position: absolute;
   top: 50%;
@@ -41,6 +101,18 @@ const StyledButtonsWrapper = styled.div`
   align-items: center;
   gap: 24px;
   z-index: 10;
+`
+
+const StyledHeaderDot = styled.div`
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #9c9e9d;
+  border-radius: 50%;
+  z-index: 150;
+  pointer-events: none;
 `
 
 const StyledProductButton = styled(Link)`
@@ -85,6 +157,26 @@ const ProductsPage = () => {
     <PageWrapper>
       <ScalableContent $scale={scale}>
         <StyledFrame>
+          <StyledLeftMarginStrip />
+          <StyledRightMarginStrip />
+          <StyledTopLine />
+          <StyledHeaderBottomLine />
+          <StyledHeaderVLine className="vl-1" />
+          <StyledHeaderVLine className="vl-2" />
+          <StyledHeaderVLine className="vl-3" />
+          <StyledHeaderVLine className="vl-4" />
+          <StyledHeaderDot style={{ left: 27, top: 12 }} />
+          <StyledHeaderDot style={{ left: 27, top: 86 }} />
+          <StyledHeaderDot style={{ left: 545, top: 12 }} />
+          <StyledHeaderDot style={{ left: 545, top: 86 }} />
+          <StyledHeaderDot style={{ left: 840, top: 12 }} />
+          <StyledHeaderDot style={{ left: 840, top: 86 }} />
+          <StyledHeaderDot style={{ left: 1115, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1115, top: 86 }} />
+          <StyledHeaderDot style={{ left: 1315, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1315, top: 86 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 12 }} />
+          <StyledHeaderDot style={{ left: 1885, top: 86 }} />
           <Header />
           <StyledButtonsWrapper>
             {buttons.map((btn, i) => (

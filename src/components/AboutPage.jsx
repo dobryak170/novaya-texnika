@@ -59,7 +59,7 @@ const StyledLeftMarginStrip = styled.div`
   position: absolute;
   left: 30px;
   top: 0;
-  width: 1.5px;
+  width: 1px;
   height: ${DESIGN_HEIGHT}px;
   background: #9C9E9D;
   z-index: 50;
@@ -69,7 +69,7 @@ const StyledRightMarginStrip = styled.div`
   position: absolute;
   left: 1888px;
   top: 0;
-  width: 1.5px;
+  width: 1px;
   height: ${DESIGN_HEIGHT}px;
   background: #9C9E9D;
   z-index: 50;
@@ -80,7 +80,7 @@ const StyledTopLine = styled.div`
   top: 15px;
   left: 0;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -90,7 +90,7 @@ const StyledHeaderBottomLine = styled.div`
   top: 90px;
   left: 0;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -99,8 +99,8 @@ const StyledVDivider = styled.div`
   position: absolute;
   top: 15px;
   left: 548px;
-  width: 1.5px;
-  height: 76px;
+  width: 1px;
+  height: 75px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -109,7 +109,7 @@ const StyledVDivider2 = styled.div`
   position: absolute;
   top: 15px;
   left: 844px;
-  width: 1.5px;
+  width: 1px;
   height: 75px;
   background: #9C9E9D;
   z-index: 50;
@@ -119,7 +119,7 @@ const StyledVDivider3 = styled.div`
   position: absolute;
   top: 16px;
   left: 1118px;
-  width: 1.5px;
+  width: 1px;
   height: 1049px;
   background: #9C9E9D;
   z-index: 50;
@@ -129,7 +129,7 @@ const StyledVDivider4 = styled.div`
   position: absolute;
   top: 16px;
   left: 1318px;
-  width: 1.5px;
+  width: 1px;
   height: 2130px;
   background: #9C9E9D;
   z-index: 50;
@@ -137,7 +137,7 @@ const StyledVDivider4 = styled.div`
 
 const StyledHLine = styled.div`
   position: absolute;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -146,18 +146,52 @@ const StyledHLine = styled.div`
   &.section-2   { top: 2145px; left: 0;      width: 1920px; }
   &.section-3   { top: 3220px; left: 1px;    width: 1920px; }
   &.bottom      { top: 4199px; left: 0;      width: 1920px; }
-  &.hero-line   { top: 784px;  left: 470px;  width: 650px;  }
   &.contact-top { top: 1004px; left: 1120px; width: 200px;  }
   &.contact-bot { top: 1070px; left: 1119px; width: 201px;  }
-  &.about-line  { top: 1004px; left: 196px;  width: 1006px; }
-  &.stat-line-1 { top: 1390px; left: 1463px; width: 300px;  }
-  &.stat-line-2 { top: 1610px; left: 1463px; width: 300px;  }
-  &.stat-line-3 { top: 1830px; left: 1463px; width: 300px;  }
+`
+
+const aboutLineLeftTaperMask =
+  'linear-gradient(to right, transparent 0%, black 6%, black 100%)'
+
+const StyledAboutLine = styled.div`
+  position: absolute;
+  top: 1004px;
+  left: 196px;
+  width: 1006px;
+  height: 1px;
+  background: #9c9e9d;
+  z-index: 100;
+  mask-image: ${aboutLineLeftTaperMask};
+  -webkit-mask-image: ${aboutLineLeftTaperMask};
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+`
+
+const taperedMask = 'linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)'
+
+const StyledTaperedLine = styled.div`
+  position: absolute;
+  height: 1px;
+  background: #9C9E9D;
+  z-index: 100;
+  mask-image: ${taperedMask};
+  -webkit-mask-image: ${taperedMask};
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+
+  &.hero-line   { top: 784px;  left: 470px;  width: 650px; }
+  &.stat-line-1 { top: 1390px; left: 1463px; width: 300px; }
+  &.stat-line-2 { top: 1610px; left: 1463px; width: 300px; }
+  &.stat-line-3 { top: 1830px; left: 1463px; width: 300px; }
 `
 
 const StyledContactBoxVLine = styled.div`
   position: absolute;
-  width: 1.5px;
+  width: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -189,6 +223,22 @@ const StyledBolaiteBrand = styled.div`
   color: #98989a;
   text-align: right;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2em;
+  box-sizing: border-box;
+`
+
+/* Одна полоса ≈ 2.5× ширина дефиса «-» при том же font-size (≈0.26em на знак в Inter 600) */
+const StyledBolaiteDash = styled.span`
+  display: inline-block;
+  flex-shrink: 0;
+  width: calc(2.5 * 0.26em);
+  height: 0.07em;
+  min-height: 2px;
+  background: currentColor;
+  vertical-align: middle;
 `
 
 const StyledHeroText = styled.p`
@@ -226,16 +276,20 @@ const StyledServiceDesc = styled.div`
 
 // ─── СВЯЗАТЬСЯ ────────────────────────────────────────────────────────────────
 
-const StyledContactBox = styled.button`
+const StyledContactBox = styled.a`
   position: absolute;
-  top: 1025px;
-  left: 1147px;
-  width: 142px;
+  top: 1004px;
+  left: 1118px;
+  width: 200px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Instrument Sans', 'Inter', sans-serif;
   font-weight: 600;
   font-size: 24px;
   color: #000f46;
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
   background: transparent;
   border: none;
@@ -243,6 +297,8 @@ const StyledContactBox = styled.button`
   cursor: pointer;
   transition: color 0.2s ease;
   z-index: 11;
+  text-decoration: none;
+  box-sizing: border-box;
 
   &:hover { color: #575757; }
 `
@@ -293,13 +349,14 @@ const StyledStatItem = styled.div`
   font-family: Inter, sans-serif;
   font-weight: 300;
   font-size: 32px;
+  line-height: 1.3;
   color: #9c9e9d;
   text-align: center;
   z-index: 100;
 
-  &.stat-1 { top: 1300px; left: 1405px; width: 416px; }
-  &.stat-2 { top: 1441px; left: 1531px; width: 164px; }
-  &.stat-3 { top: 1681px; left: 1551px; width: 124px; }
+  &.stat-1 { top: 1283px; left: 1405px; width: 416px; }
+  &.stat-2 { top: 1503px; left: 1405px; width: 416px; }
+  &.stat-3 { top: 1723px; left: 1405px; width: 416px; }
 `
 
 // ─── Circle decoration ───────────────────────────────────────────────────────
@@ -391,124 +448,128 @@ const StyledImg = styled.img`
   &.cert-3887   { top: 2538px; left: 333px;  width: 187px; height: 265px; }
 `
 
-// ─── Form ─────────────────────────────────────────────────────────────────────
+// ─── Form (структура как на продуктовых страницах; тёмный фон секции) ─────────
 
-const StyledFormSection = styled.section`
+const StyledFormTitle = styled.h2`
   position: absolute;
-  top: 3220px;
-  left: 0;
-  width: 1920px;
-`
-
-const StyledFormTitle = styled(motion.div)`
-  position: absolute;
-  top: 220px;
+  top: 3440px;
   left: 450px;
+  color: white;
   font-family: Inter, sans-serif;
   font-weight: 700;
-  font-size: 60px;
-  color: white;
+  font-size: 48px;
   text-align: center;
-  white-space: nowrap;
 `
 
-const StyledFormSubtext = styled.p`
+const StyledFormSubtitle = styled.p`
   position: absolute;
-  top: 313px;
+  top: 3533px;
   left: 870px;
+  color: #d9d9d9;
   font-family: Inter, sans-serif;
   font-weight: 700;
   font-size: 24px;
-  color: #d9d9d9;
-  line-height: 1.5;
+  line-height: 1.3;
   margin: 0;
 `
 
-const StyledFormRow = styled.div`
+const StyledFormWrapper = styled.form`
   position: absolute;
-  top: 603px;
+  top: 3823px;
   left: 262px;
   width: 1402px;
-  height: 59px;
+  min-height: 59px;
 `
 
-const StyledFormFieldWrapper = styled.div`
+const StyledFormLine = styled.div`
   position: absolute;
-  display: flex;
-  flex-direction: column;
-
-  &.field-name  { left: 0;      width: 366px; }
-  &.field-phone { left: 520px;  width: 366px; }
-  &.field-email { left: 1030px; width: 366px; }
+  top: 0;
+  left: ${({ $left }) => $left}px;
+  width: 366px;
+  height: 1px;
+  background: #9c9e9d;
 `
 
-const StyledFormUnderline = styled.div`
-  width: 100%;
-  height: 1.5px;
-  background: #9C9E9D;
+const StyledFormLabel = styled.label`
+  position: absolute;
+  top: ${({ $top }) => $top}px;
+  left: ${({ $left }) => $left}px;
+  width: 366px;
+  text-align: center;
+  color: white;
+  font-family: Inter, sans-serif;
+  font-weight: 100;
+  font-size: 24px;
 `
 
 const StyledFormInput = styled.input`
-  width: 100%;
+  position: absolute;
+  top: -35px;
+  left: ${({ $left }) => $left !== undefined ? $left : 0}px;
+  width: 366px;
+  height: 30px;
   background: transparent;
   border: none;
   outline: none;
   font-family: Inter, sans-serif;
   font-weight: 100;
   font-size: 24px;
-  color: white;
-  padding: 0;
-  height: 27px;
-
-  &::placeholder { color: transparent; }
-`
-
-const StyledFormLabel = styled.label`
-  margin-top: 6px;
-  font-family: Inter, sans-serif;
-  font-weight: 100;
-  font-size: 24px;
+  text-align: center;
   color: white;
 `
 
-const StyledSubmitWrapper = styled.div`
+const StyledFieldError = styled(motion.div)`
   position: absolute;
-  top: 783px;
+  width: 366px;
+  text-align: center;
+  color: #ffcdd2;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 16px;
+  background: rgba(244, 67, 54, 0.15);
+  border-radius: 8px;
+  border-left: 4px solid #ef5350;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+`
+
+const StyledSubmitBlock = styled.div`
+  position: absolute;
+  top: 4003px;
   left: 807px;
-  width: 308px;
-  height: 64px;
+  width: 301px;
+  height: 62px;
 `
 
 const StyledSubmitDot = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
+  left: -4px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
   background: white;
-  border-radius: 6px;
+  border-radius: 50%;
   z-index: 2;
   pointer-events: none;
 `
 
-const StyledSubmitButton = styled.button`
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 302px;
-  height: 60px;
-  background: transparent;
-  border: 1px solid #868686;
-  cursor: pointer;
-  font-family: Inter, sans-serif;
+const StyledSubmitInner = styled.button`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #272b37;
+  border: 1px solid #9c9e9d;
+  border-radius: 0 8px 8px 8px;
+  color: white;
+  font-family: Inter;
   font-weight: 700;
   font-size: 32px;
-  color: white;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: color 0.3s ease;
+  transition: color 0.35s ease;
 
   &::after {
     content: '';
@@ -517,28 +578,18 @@ const StyledSubmitButton = styled.button`
     background: white;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease;
     z-index: 0;
+    border-radius: 0 8px 8px 8px;
   }
 
   &:hover::after { transform: scaleX(1); }
-  &:hover span   { color: #272B37; }
-  &:disabled     { opacity: 0.7; cursor: not-allowed; }
+  &:hover { color: #272b37; }
 
   span {
     position: relative;
     z-index: 1;
-    transition: color 0.3s ease;
   }
-`
-
-const StyledFormStatus = styled.div`
-  position: absolute;
-  top: 863px;
-  left: 807px;
-  font-family: Inter, sans-serif;
-  font-size: 18px;
-  color: ${({ $error }) => ($error ? '#f44336' : '#4caf50')};
 `
 
 // ─── Footer ──────────────────────────────────────────────────────────────────
@@ -567,28 +618,64 @@ const DOT_POSITIONS = [
   { top: 1067, left: 1116 },
   { top: 1001, left: 1316 },
   { top: 1001, left: 1116 },
-  { top: 11,   left: 28   },
-  { top: 86,   left: 28   },
-  { top: 11,   left: 545  },
+  { top: 12,   left: 27   },
+  { top: 86,   left: 27   },
+  { top: 12,   left: 545  },
   { top: 86,   left: 545  },
   { top: 12,   left: 840  },
   { top: 86,   left: 840  },
   { top: 12,   left: 1115 },
-  { top: 85,   left: 1115 },
+  { top: 86,   left: 1115 },
   { top: 12,   left: 1315 },
   { top: 86,   left: 1315 },
   { top: 12,   left: 1885 },
   { top: 86,   left: 1885 },
+  /* section-1: боковые полосы (линия 1070px) */
+  { top: 1067, left: 27   },
+  { top: 1067, left: 1885 },
+  /* section-2: боковые + пересечение с VDivider4 1318px (линия 2145px) */
+  { top: 2142, left: 27   },
+  { top: 2142, left: 1315 },
+  { top: 2142, left: 1885 },
+  /* section-3: только боковые полосы (внутренние вертикали не доходят до 3220px) */
+  { top: 3217, left: 27   },
+  { top: 3217, left: 1885 },
+  /* bottom line (4199px): боковые полосы */
+  { top: 4195.5, left: 26.5   },
+  { top: 4195.5, left: 1884.5 },
 ]
 
 const IMG = (name) => `/src/frontend/images/aboutus/${name}`
+
+const capitalizeFirst = (str) => {
+  if (!str || str.length === 0) return str
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+const formatPhoneNumber = (value) => {
+  const digits = value.replace(/\D/g, '')
+  if (digits.length === 0) return '+7'
+  let d = digits
+  if (d[0] === '8') d = '7' + d.slice(1)
+  else if (d[0] !== '7') d = '7' + d
+  d = d.slice(0, 11)
+  if (d.length <= 1) return '+' + d
+  if (d.length <= 3) return `+7 (${d.slice(1)}`
+  if (d.length <= 4) return `+7 (${d.slice(1, 4)})`
+  if (d.length <= 7) return `+7 (${d.slice(1, 4)}) ${d.slice(4)}`
+  if (d.length <= 9) return `+7 (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7)}`
+  return `+7 (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9, 11)}`
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 const AboutPage = () => {
   const [scale, setScale] = useState(() => window.innerWidth / DESIGN_WIDTH)
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '' })
+  const [formName, setFormName] = useState('')
+  const [formPhone, setFormPhone] = useState('+7')
+  const [formEmail, setFormEmail] = useState('')
   const [formStatus, setFormStatus] = useState(null)
+  const [formFieldErrors, setFormFieldErrors] = useState({ name: false, phone: false, email: false })
 
   const API_URL = import.meta.env.VITE_API_URL || ''
 
@@ -599,24 +686,33 @@ const AboutPage = () => {
     return () => window.removeEventListener('resize', updateScale)
   }, [])
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-    setFormStatus(null)
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhoneNumber(e.target.value)
+    setFormPhone(formatted)
+    setFormFieldErrors((prev) => ({ ...prev, phone: false }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const nameErr = !formName || formName.length < 2
+    const phoneDigits = formPhone.replace(/\D/g, '')
+    const phoneErr = phoneDigits.length < 11
+    const emailErr = formEmail && !formEmail.includes('@')
+    setFormFieldErrors({ name: nameErr, phone: phoneErr, email: emailErr })
+    if (nameErr || phoneErr || emailErr) return
     setFormStatus('sending')
     try {
       const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ name: formName, phone: formPhone, email: formEmail }),
       })
       const data = await res.json().catch(() => ({}))
       if (res.ok && data.success !== false) {
         setFormStatus('success')
-        setFormData({ name: '', phone: '', email: '' })
+        setFormName('')
+        setFormPhone('+7')
+        setFormEmail('')
       } else {
         setFormStatus('error')
       }
@@ -648,13 +744,13 @@ const AboutPage = () => {
           <StyledHLine className="section-2" />
           <StyledHLine className="section-3" />
           <StyledHLine className="bottom" />
-          <StyledHLine className="hero-line" />
+          <StyledTaperedLine className="hero-line" />
           <StyledHLine className="contact-top" />
           <StyledHLine className="contact-bot" />
-          <StyledHLine className="about-line" />
-          <StyledHLine className="stat-line-1" />
-          <StyledHLine className="stat-line-2" />
-          <StyledHLine className="stat-line-3" />
+          <StyledAboutLine />
+          <StyledTaperedLine className="stat-line-1" />
+          <StyledTaperedLine className="stat-line-2" />
+          <StyledTaperedLine className="stat-line-3" />
 
           <StyledContactBoxVLine className="left" />
           <StyledContactBoxVLine className="right" />
@@ -676,7 +772,10 @@ const AboutPage = () => {
             оборудования
           </StyledServiceDesc>
 
-          <StyledBolaiteBrand>Bolaite ---</StyledBolaiteBrand>
+          <StyledBolaiteBrand>
+            Bolaite
+            <StyledBolaiteDash aria-hidden="true" />
+          </StyledBolaiteBrand>
 
           <StyledHeroText>
             <StyledHeroTextGray>
@@ -688,7 +787,7 @@ const AboutPage = () => {
             </StyledHeroTextGray>
           </StyledHeroText>
 
-          <StyledContactBox type="button">СВЯЗАТЬСЯ</StyledContactBox>
+          <StyledContactBox href="#request-form">СВЯЗАТЬСЯ</StyledContactBox>
 
           {/* ── About Section ── */}
           <StyledAboutLabel>О ПРОИЗВОДИТЕЛЕ:</StyledAboutLabel>
@@ -756,62 +855,117 @@ const AboutPage = () => {
           <StyledCertLabel className="c11">Разрешение на производство<br />компрессора Bolaite</StyledCertLabel>
 
           {/* ── Form ── */}
-          <StyledFormSection aria-label="Оставить заявку">
-            <StyledFormTitle
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              ОСТАВИТЬ ЗАЯВКУ
-            </StyledFormTitle>
+          <StyledFormTitle id="request-form">ОСТАВИТЬ ЗАЯВКУ</StyledFormTitle>
 
-            <StyledFormSubtext>
-              Поможем подобрать компрессор,<br />
-              соответствующий вашим запросам
-            </StyledFormSubtext>
+          <StyledFormSubtitle>
+            Поможем подобрать компрессор,
+            <br />
+            соответствующий вашим запросам
+          </StyledFormSubtitle>
 
-            <form onSubmit={handleSubmit} noValidate style={{ position: 'relative' }}>
-              <StyledFormRow>
-                <StyledFormFieldWrapper className="field-name">
-                  <StyledFormInput id="name-input" type="text"  name="name"  value={formData.name}  onChange={handleChange} aria-label="Имя" />
-                  <StyledFormUnderline />
-                  <StyledFormLabel htmlFor="name-input">ИМЯ</StyledFormLabel>
-                </StyledFormFieldWrapper>
+          <StyledFormWrapper id="contact-form" onSubmit={handleSubmit} aria-label="Форма заявки">
+            <StyledFormLine $left={0} />
+            <StyledFormLine $left={520} />
+            <StyledFormLine $left={1030} />
 
-                <StyledFormFieldWrapper className="field-phone">
-                  <StyledFormInput id="phone-input" type="tel"  name="phone" value={formData.phone} onChange={handleChange} aria-label="Номер телефона" />
-                  <StyledFormUnderline />
-                  <StyledFormLabel htmlFor="phone-input">НОМЕР ТЕЛЕФОНА</StyledFormLabel>
-                </StyledFormFieldWrapper>
+            <StyledFormLabel htmlFor="about-name-input" $left={0} $top={10}>
+              ИМЯ
+            </StyledFormLabel>
+            <StyledFormInput
+              id="about-name-input"
+              type="text"
+              value={formName}
+              onChange={(e) => {
+                setFormName(capitalizeFirst(e.target.value))
+                setFormFieldErrors((prev) => ({ ...prev, name: false }))
+              }}
+              aria-label="Имя"
+              $left={0}
+            />
 
-                <StyledFormFieldWrapper className="field-email">
-                  <StyledFormInput id="email-input" type="email" name="email" value={formData.email} onChange={handleChange} aria-label="Электронная почта" />
-                  <StyledFormUnderline />
-                  <StyledFormLabel htmlFor="email-input">ЭЛЕКТРОННАЯ ПОЧТА</StyledFormLabel>
-                </StyledFormFieldWrapper>
-              </StyledFormRow>
+            <StyledFormLabel htmlFor="about-phone-input" $left={520} $top={10}>
+              НОМЕР ТЕЛЕФОНА
+            </StyledFormLabel>
+            <StyledFormInput
+              id="about-phone-input"
+              type="tel"
+              value={formPhone}
+              onChange={handlePhoneChange}
+              aria-label="Номер телефона"
+              $left={520}
+            />
 
-              <StyledSubmitWrapper>
-                <StyledSubmitDot />
-                <StyledSubmitButton type="submit" disabled={formStatus === 'sending'} aria-label="Отправить заявку">
-                  <span>
-                    {formStatus === 'sending' ? 'ОТПРАВКА...' : formStatus === 'success' ? 'ОТПРАВЛЕНО' : 'ОТПРАВИТЬ'}
-                  </span>
-                </StyledSubmitButton>
-              </StyledSubmitWrapper>
+            <StyledFormLabel htmlFor="about-email-input" $left={1030} $top={10}>
+              ЭЛЕКТРОННАЯ ПОЧТА
+            </StyledFormLabel>
+            <StyledFormInput
+              id="about-email-input"
+              type="email"
+              value={formEmail}
+              onChange={(e) => {
+                setFormEmail(e.target.value)
+                setFormFieldErrors((prev) => ({ ...prev, email: false }))
+              }}
+              aria-label="Электронная почта"
+              $left={1030}
+            />
 
-              {formStatus === 'error' && (
-                <StyledFormStatus $error>Ошибка. Попробуйте позже.</StyledFormStatus>
-              )}
-            </form>
-          </StyledFormSection>
+            {formFieldErrors.name && (
+              <StyledFieldError
+                style={{ left: 0, top: 50 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                Введите имя
+              </StyledFieldError>
+            )}
+            {formFieldErrors.phone && (
+              <StyledFieldError
+                style={{ left: 520, top: 50 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                Введите корректный номер телефона
+              </StyledFieldError>
+            )}
+            {formFieldErrors.email && (
+              <StyledFieldError
+                style={{ left: 1030, top: 50 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                Некорректный адрес почты
+              </StyledFieldError>
+            )}
+          </StyledFormWrapper>
+
+          <StyledSubmitBlock>
+            <StyledSubmitDot />
+            <StyledSubmitInner type="submit" form="contact-form">
+              <span>ОТПРАВИТЬ</span>
+            </StyledSubmitInner>
+          </StyledSubmitBlock>
+
+          {formStatus === 'success' && (
+            <div style={{ position: 'absolute', top: 4083, left: 262, color: '#81c784', fontFamily: 'Inter, sans-serif', fontSize: 18 }}>
+              Заявка отправлена!
+            </div>
+          )}
+          {formStatus === 'error' && (
+            <div style={{ position: 'absolute', top: 4083, left: 262, color: '#ff8a80', fontFamily: 'Inter, sans-serif', fontSize: 18 }}>
+              Ошибка. Попробуйте позже.
+            </div>
+          )}
 
           {/* ── Footer ── */}
           <StyledFooter>
             <StyledFooterText>
-              телефон +7 (999) 999 99 99<br />
-              почта: mail@example.com<br />
-              адрес: Город город улица улица дом дом
+              телефон +7 (395) 297-90-37<br />
+              почта: Office@ntechnics.ru<br />
+              адрес: Иркутск, Трилиссера 87
             </StyledFooterText>
           </StyledFooter>
 

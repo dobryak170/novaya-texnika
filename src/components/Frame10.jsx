@@ -65,36 +65,56 @@ const StyledRectangle9 = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 1.5px;
+    height: 1px;
     background: #9C9E9D;
   }
 `
 
+/* Герой: полная ширина, вплотную под линией header bottom (90px) */
 const StyledMaxresdefault1 = styled.div`
-  width: 100.8%;
-  height: 711px;
-  aspect-ratio: 215/79;
-  left: -0.4%;
-  top: 96px;
   position: absolute;
+  left: 0;
+  top: 91px;
+  width: 1920px;
+  height: 716px;
   background-image: url('/images/maxresdefault 1.png');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
+  z-index: 6;
 `
 
-const StyledLine = styled.div`
+/* Как на /products/oil-injected: верх/низ 15–90px, палки 548 / 844 / 1118 / 1318 */
+const StyledTopLine = styled.div`
   position: absolute;
-  height: 1.5px;
-  background: #9C9E9D;
-  transform: rotate(-90deg);
-  transform-origin: top left;
+  top: 15px;
+  left: 0;
+  width: 1920px;
+  height: 1px;
+  background: #9c9e9d;
+  z-index: 50;
+`
+
+const StyledHeaderBottomLine = styled.div`
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 1920px;
+  height: 1px;
+  background: #9c9e9d;
+  z-index: 50;
+`
+
+const StyledHeaderVLine = styled.div`
+  position: absolute;
+  width: 1px;
+  background: #9c9e9d;
   z-index: 100;
 
-  &.line-1 { width: 76px; left: 843px; top: 96px; }
-  &.line-2 { width: 76px; left: 1118px; top: 96px; }
-  &.line-3 { width: 75px; left: 1318px; top: 96px; }
-  &.line-4 { width: 74.25px; left: 547.25px; top: 95.25px; }
+  &.vl-1 { top: 16px; left: 548px; height: 75px; }
+  &.vl-2 { top: 16px; left: 844px; height: 75px; }
+  &.vl-3 { top: 16px; left: 1118px; height: 75px; }
+  &.vl-4 { top: 16px; left: 1318px; height: 75px; }
 `
 
 const StyledLineEndDot = styled.div`
@@ -107,28 +127,31 @@ const StyledLineEndDot = styled.div`
   border-radius: 50%;
   z-index: 150;
 
-  &.v3-top { left: 544px; top: 15px; }
-  &.v3-bottom { left: 544px; top: 91px; }
-  &.l1-top { left: 840px; top: 15px; }
-  &.l1-bottom { left: 840px; top: 91px; }
-  &.l2-top { left: 1115px; top: 15px; }
-  &.l2-bottom { left: 1115px; top: 91px; }
-  &.l3-top { left: 1315px; top: 15px; }
-  &.l3-bottom { left: 1315px; top: 91px; }
-  &.left-top { left: 15px; top: 15px; }
-  &.left-bottom { left: 15px; top: 91px; }
-  &.right-top { left: 1899px; top: 15px; }
-  &.right-bottom { left: 1899px; top: 91px; }
-  &.rect9-left { left: 15px; top: 2144px; }
-  &.rect9-right { left: 1899px; top: 2145px; }
-  &.rect9-bottom-left { left: 15px; top: 3224px; }
-  &.rect9-bottom-right { left: 1899px; top: 3224px; }
-  &.atlas-line1-left { left: 15px; top: 4345px; }
-  &.atlas-line1-right { left: 1899px; top: 4345px; }
-  &.atlas-line2-left { left: 15px; top: 4435px; }
-  &.atlas-line2-right { left: 1899px; top: 4435px; }
-  &.atlas-line3-left { left: 15px; top: 5375px; }
-  &.atlas-line3-right { left: 1899px; top: 5375px; }
+  &.v3-top { left: 544.5px; top: 11.5px; }
+  &.v3-bottom { left: 544.5px; top: 86.5px; }
+  &.l1-top { left: 840.5px; top: 11.5px; }
+  &.l1-bottom { left: 840.5px; top: 86.5px; }
+  &.l2-top { left: 1114.5px; top: 11.5px; }
+  &.l2-bottom { left: 1114.5px; top: 86.5px; }
+  &.l3-top { left: 1314.5px; top: 11.5px; }
+  &.l3-bottom { left: 1314.5px; top: 86.5px; }
+  &.left-top { left: 26.5px; top: 11.5px; }
+  &.left-bottom { left: 26.5px; top: 86.5px; }
+  &.right-top { left: 1884.5px; top: 11.5px; }
+  &.right-bottom { left: 1884.5px; top: 86.5px; }
+  &.rect9-left { left: 27px; top: 2144px; }
+  &.rect9-right { left: 1885px; top: 2145px; }
+  &.rect9-bottom-left { left: 27px; top: 3224px; }
+  &.rect9-bottom-right { left: 1885px; top: 3224px; }
+  &.atlas-line1-left { left: 27px; top: 4346px; }
+  &.atlas-line1-right { left: 1885px; top: 4346px; }
+  &.atlas-line2-left { left: 27px; top: 4436px; }
+  &.atlas-line2-right { left: 1885px; top: 4436px; }
+  &.atlas-line3-left { left: 27px; top: 5375px; }
+  &.atlas-line3-right { left: 1885px; top: 5375px; }
+  /* line-bottom контактов (y=6360), как на продуктовых страницах */
+  &.contact-line-bottom-left { left: 27px; top: 6356px; }
+  &.contact-line-bottom-right { left: 1885px; top: 6356px; }
 `
 
 const StyledRectangle = styled.div`
@@ -182,7 +205,7 @@ const StyledRightPanel = styled.div`
   top: 720px;
   background: white;
   clip-path: polygon(129.544px 0, 100% 0, 100% 100%, 0 100%, 0 90px);
-  z-index: 2;
+  z-index: 7;
   border: none;
   outline: none;
   box-shadow: none;
@@ -195,7 +218,7 @@ const StyledCallToActionArea = styled.div`
   left: 1133px;
   top: 810px;
   background: linear-gradient(180deg, white 12%, #272B37 100%);
-  z-index: 2;
+  z-index: 7;
   border: none;
   outline: none;
   box-shadow: none;
@@ -211,7 +234,7 @@ const StyledCTATitle = styled.a`
   font-size: 45px;
   font-family: Inter;
   font-weight: 400;
-  z-index: 3;
+  z-index: 8;
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -240,7 +263,7 @@ const StyledCTAButton = styled.a`
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 5;
+  z-index: 9;
   text-decoration: none;
 
   &:hover {
@@ -254,7 +277,7 @@ const StyledCTAText = styled.div`
   font-size: 24px;
   font-family: Inter;
   font-weight: 400;
-  z-index: 5;
+  z-index: 9;
 
   &.text1 { width: 725px; left: 1195px; top: 880px; }
   &.text2 { width: 526px; left: 1394px; top: 912px; }
@@ -265,7 +288,7 @@ const StyledCTALine = styled.div`
   position: absolute;
   /* Линия на грани белой панели и тёмного блока, от правого угла до начала буквы «О» */
   width: 496px;
-  height: 1.5px;
+  height: 1px;
   left: 1424px;
   top: 810px;
   background: #9C9E9D;
@@ -328,7 +351,7 @@ const StyledProductCard2 = styled.a`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  z-index: 5;
+  z-index: 9;
   cursor: pointer;
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -361,7 +384,7 @@ const StyledProductCard2 = styled.a`
     top: 1645px;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 45px), calc(100% - 45px) 100%, 0 100%);
     border: none;
-    box-shadow: inset 0 0 0 1.5px white;
+    box-shadow: none;
   }
 `
 
@@ -389,7 +412,7 @@ const StyledProductDesc = styled.div`
   font-size: 20px;
   font-family: Inter;
   font-weight: 400;
-  z-index: 5;
+  z-index: 9;
 
   &.desc1 { width: 668px; left: 1162px; top: 1372px; }
   &.desc2 { width: 600px; left: 1165px; top: 1404px; white-space: nowrap; }
@@ -401,7 +424,7 @@ const StyledProductSpec = styled.div`
   position: absolute;
   color: #626262;
   font-family: Inter;
-  z-index: 5;
+  z-index: 9;
 
   &.title1 { left: 70px; top: 1734px; font-size: 24px; font-weight: 400; }
   &.brand1 { left: 521px; top: 1731px; font-size: 24px; font-weight: 400; }
@@ -540,7 +563,7 @@ const StyledAtlasSubtitle = styled.div`
 const StyledAtlasProductCard = styled.div`
   position: absolute;
   width: 360px;
-  border: 1.5px solid white;
+  border: 1px solid white;
   background: rgba(217, 217, 217, 0);
   overflow: hidden;
   display: flex;
@@ -552,31 +575,31 @@ const StyledAtlasProductCard = styled.div`
     height: 525px;
     clip-path: polygon(0 0, calc(100% - 45px) 0, 100% 45px, 100% 100%, 0 100%);
     border: none;
-    box-shadow: inset 0 0 0 1.5px white;
+    box-shadow: none;
   }
 
   &.card-motor { left: 1400px; top: 5025px; height: 470px; }
 `
 
-/* Диагональная белая линия на скосе card-bottom-2 (правый нижний угол) */
+/* SVG-рамка карточки card-bottom-2: полный полигон — без артефактов clip-path */
 const StyledCardBottom2DiagonalBorder = styled.svg`
   position: absolute;
-  left: 1729px;
-  top: 1896px;
-  width: 50px;
-  height: 50px;
+  left: 1484px;
+  top: 1645px;
+  width: 290px;
+  height: 296px;
   pointer-events: none;
   z-index: 100;
   overflow: visible;
 `
 
-/* Диагональная белая линия на скосе — SVG для надёжной отрисовки */
+/* SVG-рамка card-controller: полный полигон без артефактов clip-path */
 const StyledAtlasDiagonalBorder = styled.svg`
   position: absolute;
-  left: 1715px;
+  left: 1400px;
   top: 4500px;
-  width: 50px;
-  height: 50px;
+  width: 360px;
+  height: 525px;
   pointer-events: none;
   z-index: 100;
   overflow: visible;
@@ -640,13 +663,13 @@ const StyledAtlasMotorGlow = styled.div`
 
 const StyledAtlasLine = styled.div`
   position: absolute;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 100;
-
-  &.line-1 { width: 1884px; left: 1902px; top: 4350px; transform: rotate(180deg); transform-origin: top left; }
-  &.line-2 { width: 1884px; left: 1902px; top: 4440px; transform: rotate(180deg); transform-origin: top left; }
-  &.line-3 { width: 1884px; left: 1902px; top: 5380px; transform: rotate(180deg); transform-origin: top left; }
+  /* От левой полосы (30px) до правой (1888px), без rotate — иначе линия уезжала влево за макет */
+  &.line-1 { left: 30px; width: 1858px; top: 4350px; }
+  &.line-2 { left: 30px; width: 1858px; top: 4440px; }
+  &.line-3 { left: 30px; width: 1858px; top: 5380px; }
 `
 
 const StyledProductGlow = styled.div`
@@ -751,7 +774,7 @@ const StyledFormInput = styled.input`
   left: 110px;
   padding: 12px 0;
   border: none;
-  border-bottom: 1.5px solid #9C9E9D;
+  border-bottom: 1px solid #9C9E9D;
   background: transparent;
   color: #272B37;
   font-size: 20px;
@@ -817,9 +840,9 @@ const StyledContactLine = styled.div`
   background: #9C9E9D;
   z-index: 100;
 
-  &.line-bottom { width: 1884px; height: 1.5px; left: 1902px; top: 6360px; transform: rotate(180deg); transform-origin: top left; }
-  &.line-side1 { width: 338px; height: 1.5px; left: 1400px; top: 6063px; transform: rotate(-90deg); transform-origin: top left; }
-  &.line-side2 { width: 190px; height: 1.5px; left: 1760px; top: 6010px; transform: rotate(-90deg); transform-origin: top left; }
+  &.line-bottom { width: 1921px; height: 1px; left: -1px; top: 6360px; }
+  &.line-side1 { width: 338px; height: 1px; left: 1400px; top: 6063px; transform: rotate(-90deg); transform-origin: top left; }
+  &.line-side2 { width: 190px; height: 1px; left: 1760px; top: 6010px; transform: rotate(-90deg); transform-origin: top left; }
 `
 
 const StyledSubmitButtonWrapper = styled.div`
@@ -896,7 +919,7 @@ const taperedMask = 'linear-gradient(to right, transparent 0%, black 20%, black 
 
 const StyledDecorativeLine = styled.div`
   position: absolute;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 100;
   mask-image: ${taperedMask};
@@ -908,27 +931,7 @@ const StyledDecorativeLine = styled.div`
 
   &.h-line-1 { width: 1300px; left: 70px; top: 1245px; }
   &.h-line-2 { width: 1010px; left: 70px; top: 1370px; }
-  &.h-line-3 {
-    width: 1920px;
-    left: 1920px;
-    top: 20px;
-    transform: rotate(180deg);
-    transform-origin: top left;
-    mask-image: none;
-    -webkit-mask-image: none;
-  }
-
-  &.v-line-2 {
-    width: 6383px;
-    left: 1902px;
-    top: 6360px;
-    transform: rotate(-90deg);
-    transform-origin: top left;
-    mask-image: none;
-    -webkit-mask-image: none;
-  }
   &.bolaite-line-18 { width: 2320px; left: 1282px; top: 3947px; transform: rotate(90deg); transform-origin: top left; }
-  &.v-line-3 { width: 74.25px; left: 547.25px; top: 95.25px; transform: rotate(-90deg); transform-origin: top left; }
   
   &.prod-line-1 { width: 535px; left: 70px; top: 1765px; }
   &.prod-line-2 { width: 535px; left: 70px; top: 1816px; }
@@ -942,23 +945,48 @@ const StyledDecorativeLine = styled.div`
   &.bolaite-line-18 { width: 2320px; left: 1282px; top: 3947px; transform: rotate(90deg); transform-origin: top left; }
 `
 
+/* Как на страницах продуктов: левая полоса 30px, правая 1888px */
 const StyledLeftMarginStrip = styled.div`
   position: absolute;
-  left: 18px;
+  left: 30px;
   top: 0;
-  width: 1.5px;
-  height: 6360px;
-  background: #9C9E9D;
+  width: 1px;
+  height: ${DESIGN_HEIGHT}px;
+  background: #9c9e9d;
+  z-index: 50;
+`
+
+const StyledRightMarginStrip = styled.div`
+  position: absolute;
+  left: 1888px;
+  top: 0;
+  width: 1px;
+  height: ${DESIGN_HEIGHT}px;
+  background: #9c9e9d;
   z-index: 50;
 `
 
 const StyledBottomStrip = styled.div`
   position: absolute;
   left: 0;
-  top: ${DESIGN_HEIGHT - 1.5}px;
+  top: ${DESIGN_HEIGHT - 1}px;
   width: 100%;
-  height: 1.5px;
+  height: 1px;
   background: #272B37;
+  z-index: 100;
+`
+
+const StyledFooterAddress = styled.address`
+  position: absolute;
+  top: ${DESIGN_HEIGHT - 85}px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-family: Inter, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  text-align: center;
+  font-style: normal;
   z-index: 100;
 `
 
@@ -1101,17 +1129,19 @@ const Frame10 = () => {
     <StyledFrame10>
       <Header />
       <StyledLeftMarginStrip />
+      <StyledRightMarginStrip />
+      <StyledTopLine />
+      <StyledHeaderBottomLine />
+      <StyledHeaderVLine className="vl-1" />
+      <StyledHeaderVLine className="vl-2" />
+      <StyledHeaderVLine className="vl-3" />
+      <StyledHeaderVLine className="vl-4" />
       <StyledRectangle16 />
       <StyledRectangle9 />
       <StyledDecorativeLine className="rect9-line-top" />
       <StyledDecorativeLine className="rect9-line-bottom" />
       <StyledDecorativeLine className="bolaite-line-18" />
       <StyledMaxresdefault1 />
-
-      <StyledLine className="line-1" />
-      <StyledLine className="line-2" />
-      <StyledLine className="line-3" />
-      <StyledLine className="line-4" />
 
       <StyledLineEndDot className="left-top" />
       <StyledLineEndDot className="left-bottom" />
@@ -1168,9 +1198,6 @@ const Frame10 = () => {
 
       <StyledDecorativeLine className="h-line-1" />
       <StyledDecorativeLine className="h-line-2" />
-      <StyledDecorativeLine className="h-line-3" />
-      <StyledDecorativeLine className="v-line-2" />
-      <StyledDecorativeLine className="v-line-3" />
       <StyledDecorativeLine className="prod-line-1" />
       <StyledDecorativeLine className="prod-line-2" />
       <StyledDecorativeLine className="prod-line-3" />
@@ -1220,8 +1247,13 @@ const Frame10 = () => {
       <StyledProductCard2 className="card-bottom-2" href="#" aria-label="Лазерная резка">
         <StyledProductImage className="product2" src="/images/laser-cutting-3-800-800.jpg 1.png" alt="Лазерная резка" />
       </StyledProductCard2>
-      <StyledCardBottom2DiagonalBorder viewBox="0 0 50 50" preserveAspectRatio="none">
-        <line x1="45" y1="0" x2="0" y2="45" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      <StyledCardBottom2DiagonalBorder viewBox="0 0 290 296">
+        <polygon
+          points="0.5,0.5 289.5,0.5 289.5,251 244.5,295.5 0.5,295.5"
+          fill="none"
+          stroke="white"
+          strokeWidth="1"
+        />
       </StyledCardBottom2DiagonalBorder>
 
       <StyledCatalogButton>ОТКРЫТЬ КАТАЛОГ</StyledCatalogButton>
@@ -1292,9 +1324,14 @@ const Frame10 = () => {
         </StyledAtlasCardImageArea>
         <StyledAtlasCardText>Двигатель постоянного тока с масляным охлаждением</StyledAtlasCardText>
       </StyledAtlasProductCard>
-      <StyledAtlasDiagonalBorder viewBox="0 0 50 50" preserveAspectRatio="none">
-          <line x1="0" y1="0" x2="45" y2="45" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        </StyledAtlasDiagonalBorder>
+      <StyledAtlasDiagonalBorder viewBox="0 0 360 525">
+        <polygon
+          points="0.5,0.5 315,0.5 359.5,45 359.5,524.5 0.5,524.5"
+          fill="none"
+          stroke="white"
+          strokeWidth="1"
+        />
+      </StyledAtlasDiagonalBorder>
 
       <StyledAtlasMotorGlow />
       <StyledAtlasProductCard className="card-motor">
@@ -1404,8 +1441,18 @@ const Frame10 = () => {
       <StyledContactDetail className="detail3">Office@ntechnics.ru</StyledContactDetail>
 
       <StyledContactLine className="line-bottom" />
+      <StyledLineEndDot className="contact-line-bottom-left" />
+      <StyledLineEndDot className="contact-line-bottom-right" />
       <StyledContactLine className="line-side1" />
       <StyledContactLine className="line-side2" />
+
+      <StyledFooterAddress>
+        телефон +7 (395) 297-90-37
+        <br />
+        почта: Office@ntechnics.ru
+        <br />
+        адрес: Иркутск, Трилиссера 87
+      </StyledFooterAddress>
     </StyledFrame10>
       </ScalableContent>
     </PageWrapper>

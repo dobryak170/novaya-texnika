@@ -45,7 +45,7 @@ const StyledLeftMarginStrip = styled.div`
   position: absolute;
   left: 30px;
   top: 0;
-  width: 1.5px;
+  width: 1px;
   height: ${DESIGN_HEIGHT}px;
   background: #9C9E9D;
   z-index: 50;
@@ -55,7 +55,7 @@ const StyledRightMarginStrip = styled.div`
   position: absolute;
   left: 1888px;
   top: 0;
-  width: 1.5px;
+  width: 1px;
   height: ${DESIGN_HEIGHT}px;
   background: #9C9E9D;
   z-index: 50;
@@ -66,17 +66,17 @@ const StyledTopLine = styled.div`
   top: 15px;
   left: 0;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
 
 const StyledBottomLine = styled.div`
   position: absolute;
-  top: ${DESIGN_HEIGHT - 1.5}px;
+  top: ${DESIGN_HEIGHT - 1}px;
   left: 0;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #272B37;
   z-index: 100;
 `
@@ -84,9 +84,9 @@ const StyledBottomLine = styled.div`
 const StyledHeaderBottomLine = styled.div`
   position: absolute;
   top: 90px;
-  left: 31px;
-  width: 1858px;
-  height: 1.5px;
+  left: 0;
+  width: 1920px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -95,8 +95,8 @@ const StyledVDivider = styled.div`
   position: absolute;
   top: 15px;
   left: 548px;
-  width: 1.5px;
-  height: 3443px;
+  width: 1px;
+  height: 3432px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -105,25 +105,25 @@ const StyledVDivider2 = styled.div`
   position: absolute;
   top: 15px;
   left: 844px;
-  width: 1.5px;
-  height: 2145px;
+  width: 1px;
+  height: 2143px;
   background: #9C9E9D;
   z-index: 10;
 `
 
 const StyledHeaderVLine = styled.div`
   position: absolute;
-  width: 1.5px;
+  width: 1px;
   background: #9C9E9D;
   z-index: 100;
 
-  &.vl-1 { top: 15px; left: 1118px; height: 75px; }
-  &.vl-2 { top: 15px; left: 1318px; height: 76px; }
+  &.vl-1 { top: 16px; left: 1118px; height: 75px; }
+  &.vl-2 { top: 16px; left: 1318px; height: 75px; }
 `
 
 const StyledHLine = styled.div`
   position: absolute;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -137,7 +137,6 @@ const StyledHLine = styled.div`
   &.compressor-3 { top: 700px; left: 1090px; width: 340px; }
   &.compressor-4 { top: 770px; left: 1260px; width: 170px; }
   &.compressor-5 { top: 994px; left: 550px; width: 295px; }
-  &.compressor-6 { top: 1070px; left: 550px; width: 295px; }
 
   &.dryer-1 { top: 1405px; left: 32px; width: 518px; }
   &.filter-1 { top: 2514px; left: 795px; width: 1095px; }
@@ -146,7 +145,7 @@ const StyledHLine = styled.div`
 
 const StyledContactBoxVLine = styled.div`
   position: absolute;
-  width: 1.5px;
+  width: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -441,7 +440,7 @@ const StyledFormLine = styled.div`
   top: 0;
   left: ${({ $left }) => $left}px;
   width: 366px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
 `
 
@@ -565,19 +564,19 @@ const StyledFooterAddress = styled.address`
 `
 
 const DOT_POSITIONS = [
-  { top: 87,   left: 27  },
-  { top: 12,   left: 27  },
-  { top: 12,   left: 545 },
-  { top: 12,   left: 841 },
-  { top: 87,   left: 841 },
-  { top: 87,   left: 1115 },
-  { top: 12,   left: 1115 },
-  { top: 12,   left: 1315 },
-  { top: 87,   left: 1315 },
-  { top: 87,   left: 1885 },
-  { top: 11,   left: 1885 },
-  { top: 86,   left: 545  },
-  { top: 627,  left: 841  },
+  { top: 86.5, left: 26.5  },
+  { top: 11.5, left: 26.5  },
+  { top: 11.5, left: 544.5 },
+  { top: 11.5, left: 840.5 },
+  { top: 86.5, left: 840.5 },
+  { top: 86.5, left: 1114.5 },
+  { top: 11.5, left: 1114.5 },
+  { top: 11.5, left: 1314.5 },
+  { top: 86.5, left: 1314.5 },
+  { top: 86.5, left: 1884.5 },
+  { top: 11.5, left: 1884.5 },
+  { top: 86.5, left: 544.5  },
+  { top: 627,  left: 840  },
   { top: 697,  left: 1088 },
   { top: 767,  left: 1256 },
   { top: 1068, left: 545  },
@@ -585,7 +584,10 @@ const DOT_POSITIONS = [
   { top: 991,  left: 841  },
   { top: 1068, left: 27   },
   { top: 2155, left: 27   },
+  { top: 2155, left: 545  },
+  { top: 2155, left: 840  },
   { top: 3227, left: 27   },
+  { top: 3227, left: 545  },
   { top: 4203, left: 27   },
   { top: 1068, left: 1885 },
   { top: 2155, left: 1885 },
@@ -594,9 +596,9 @@ const DOT_POSITIONS = [
   { top: 562,  left: 545  },
   { top: 991,  left: 545  },
   /* левый конец линии filter-1 (top 2514px, left 795px, width 1095px) */
-  { top: 2511, left: 792 },
+  { top: 2510, left: 792 },
   /* правый конец линии filter-2 (top 3084px, left 550px, width 165px) */
-  { top: 3082, left: 712 },
+  { top: 3081, left: 712 },
 ]
 
 const capitalizeFirst = (str) => {
@@ -701,7 +703,6 @@ const CatalogPage = () => {
           <StyledHLine className="compressor-3" />
           <StyledHLine className="compressor-4" />
           <StyledHLine className="compressor-5" />
-          <StyledHLine className="compressor-6" />
           <StyledHLine className="dryer-1" />
           <StyledHLine className="filter-1" />
           <StyledHLine className="filter-2" />

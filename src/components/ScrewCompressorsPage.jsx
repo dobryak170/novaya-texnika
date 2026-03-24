@@ -49,8 +49,8 @@ const StyledLeftMarginStrip = styled.div`
   position: absolute;
   left: 30px;
   top: 0;
-  width: 1.5px;
-  height: 5112px;
+  bottom: 0;
+  width: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -59,8 +59,8 @@ const StyledRightMarginStrip = styled.div`
   position: absolute;
   left: 1888px;
   top: 0;
-  width: 1.5px;
-  height: 4826px;
+  bottom: 0;
+  width: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -70,7 +70,7 @@ const StyledTopLine = styled.div`
   top: 15px;
   left: 0;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -80,7 +80,7 @@ const StyledHeaderBottomLine = styled.div`
   top: 90px;
   left: 0;
   width: 1920px;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -89,8 +89,8 @@ const StyledVDivider = styled.div`
   position: absolute;
   top: 15px;
   left: 548px;
-  width: 1.5px;
-  height: 4505px;
+  width: 1px;
+  height: 4495px;
   background: #9C9E9D;
   z-index: 50;
 `
@@ -99,8 +99,8 @@ const StyledVDivider2 = styled.div`
   position: absolute;
   top: 15px;
   left: 844px;
-  width: 1.5px;
-  height: 1575px;
+  width: 1px;
+  height: 1400px;
   background: #9C9E9D;
   z-index: 10;
 `
@@ -109,7 +109,7 @@ const StyledVDivider3 = styled.div`
   position: absolute;
   top: 1690px;
   left: 1748px;
-  width: 1.5px;
+  width: 1px;
   height: 1910px;
   background: #9C9E9D;
   z-index: 50;
@@ -117,7 +117,7 @@ const StyledVDivider3 = styled.div`
 
 const StyledHeaderVLine = styled.div`
   position: absolute;
-  width: 1.5px;
+  width: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -127,7 +127,7 @@ const StyledHeaderVLine = styled.div`
 
 const StyledHLine = styled.div`
   position: absolute;
-  height: 1.5px;
+  height: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -142,12 +142,11 @@ const StyledHLine = styled.div`
   &.compressor-3 { top: 700px;  left: 1090px; width: 340px; }
   &.compressor-4 { top: 770px;  left: 1260px; width: 170px; }
   &.compressor-5 { top: 994px;  left: 550px;  width: 295px; }
-  &.compressor-6 { top: 1064px; left: 550px;  width: 295px; }
 `
 
 const StyledContactBoxVLine = styled.div`
   position: absolute;
-  width: 1.5px;
+  width: 1px;
   background: #9C9E9D;
   z-index: 100;
 
@@ -415,7 +414,7 @@ const StyledFormLine = styled.div`
   top: 0;
   left: ${({ $left }) => $left}px;
   width: 366px;
-  height: 1.5px;
+  height: 1px;
   background: #9c9e9d;
 `
 
@@ -549,26 +548,44 @@ const StyledFormSection = styled.section`
 // ─── Dot positions ────────────────────────────────────────────────────────────
 
 const DOT_POSITIONS = [
-  { top: 11,   left: 28   },
-  { top: 86,   left: 28   },
-  { top: 11,   left: 545  },
-  { top: 86,   left: 545  },
-  { top: 12,   left: 840  },
-  { top: 86,   left: 840  },
-  { top: 12,   left: 1115 },
-  { top: 85,   left: 1115 },
-  { top: 12,   left: 1315 },
-  { top: 86,   left: 1315 },
-  { top: 12,   left: 1885 },
-  { top: 86,   left: 1885 },
+  { top: 11.5, left: 26.5  },
+  { top: 86.5, left: 26.5  },
+  { top: 11.5, left: 544.5 },
+  { top: 86.5, left: 544.5 },
+  { top: 11.5, left: 840.5 },
+  { top: 86.5, left: 840.5 },
+  { top: 11.5, left: 1114.5 },
+  { top: 86.5, left: 1114.5 },
+  { top: 11.5, left: 1314.5 },
+  { top: 86.5, left: 1314.5 },
+  { top: 11.5, left: 1884.5 },
+  { top: 86.5, left: 1884.5 },
   { top: 562,  left: 545  },
-  { top: 627,  left: 841  },
+  { top: 627,  left: 840  },
   { top: 697,  left: 1088 },
   { top: 767,  left: 1256 },
   { top: 991,  left: 545  },
   { top: 1060, left: 545  },
-  { top: 991,  left: 841  },
-  { top: 1060, left: 841  },
+  { top: 991,  left: 840  },
+  { top: 1060, left: 840  },
+  /* section-1: боковые полосы (линия 1064px) */
+  { top: 1061, left: 27   },
+  { top: 1061, left: 1885 },
+  /* section-2: как section-3 (линия 2145px) */
+  { top: 2142, left: 27   },
+  { top: 2142, left: 545  },
+  { top: 2142, left: 1745 },
+  { top: 2142, left: 1885 },
+  /* section-3: боковые + VDivider 548 + VDivider3 1748 (VDivider2 844 не доходит до 3220) */
+  { top: 3217, left: 27   },
+  { top: 3217, left: 545  },
+  { top: 3217, left: 1745 },
+  { top: 3217, left: 1885 },
+  /* section-4 / section-5 × боковые полосы (центр 8px-точки на пересечении) */
+  { top: 4304, left: 27   },
+  { top: 4304, left: 1885 },
+  { top: 5266, left: 27   },
+  { top: 5266, left: 1885 },
 ]
 
 // ─── Image base path ──────────────────────────────────────────────────────────
@@ -681,7 +698,6 @@ const ScrewCompressorsPage = () => {
           <StyledHLine className="compressor-3" />
           <StyledHLine className="compressor-4" />
           <StyledHLine className="compressor-5" />
-          <StyledHLine className="compressor-6" />
 
           <StyledContactBoxVLine className="left" />
           <StyledContactBoxVLine className="right" />
@@ -930,4 +946,4 @@ const ScrewCompressorsPage = () => {
   )
 }
 
-export { ScrewCompressorsPage as default }
+export default ScrewCompressorsPage
