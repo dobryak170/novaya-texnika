@@ -115,7 +115,7 @@ const Header = () => {
       <StyledNavItem href="/products" className={`nav-2 nav-item ${activeNav === 'nav-2' ? 'active' : ''}`}><StyledNavText>ПРОДУКЦИЯ</StyledNavText></StyledNavItem>
       <StyledNavItem href="/parts" className={`nav-3 nav-item ${activeNav === 'nav-3' ? 'active' : ''}`}><StyledNavText>ЗАПЧАСТИ</StyledNavText></StyledNavItem>
       <StyledNavItem href="/about" className={`nav-4 nav-item ${activeNav === 'nav-4' ? 'active' : ''}`}><StyledNavText>О НАС</StyledNavText></StyledNavItem>
-      <StyledNavItem href="/contacts" className={`nav-5 nav-item ${activeNav === 'nav-5' ? 'active' : ''}`}><StyledNavText>КОНТАКТЫ</StyledNavText></StyledNavItem>
+      <StyledNavItem as={Link} to="/" onClick={(e) => { e.preventDefault(); window.location.href = '/#request-form'; }} className={`nav-5 nav-item ${activeNav === 'nav-5' ? 'active' : ''}`}><StyledNavText>КОНТАКТЫ</StyledNavText></StyledNavItem>
       <StyledContactInfo className="email">Office@ntechnics.ru</StyledContactInfo>
       <StyledContactInfo className="phone">+7 (395) 297-90-37</StyledContactInfo>
     </>

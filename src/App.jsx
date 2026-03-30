@@ -13,6 +13,8 @@ import PortablePage from './components/PortablePage'
 import AboutPage from './components/AboutPage'
 import NotFound from './pages/NotFound'
 import './styles/responsive.css'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
   /* Палитра сайта */
@@ -53,12 +55,32 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+function ScrollToAnchor() {
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (hash === '#request-form' && pathname === '/') {
+      const timer = setTimeout(() => {
+        const element = document.getElementById('request-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [hash, pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <GlobalStyle />
         <SeoHead />
+        <ScrollToAnchor />
         <Routes>
           <Route path="/" element={<Frame10 />} />
           <Route path="/parts" element={<Frame4 />} />
