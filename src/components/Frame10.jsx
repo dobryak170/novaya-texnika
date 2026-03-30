@@ -294,14 +294,22 @@ const StyledCTAButton = styled.a`
 const StyledCTAText = styled.div`
   position: absolute;
   color: #3a3d42;
-  font-size: 24px;
-  font-family: Inter;
+  font-size: 20px;
+  font-family: Inter, sans-serif;
   font-weight: 400;
   z-index: 9;
+  
+  /* Эти три строки критически важны для выравнивания по правой стороне */
+  width: auto;
+  white-space: nowrap;
+  text-align: right;
 
-  &.text1 { width: 725px; left: 1195px; top: 880px; }
-  &.text2 { width: 526px; left: 1394px; top: 912px; }
-  &.text3 { width: 526px; left: 1394px; top: 944px; }
+  /* Укажи одно и то же значение "right", чтобы правый край был идеально ровным */
+  /* Например, 50px или 100px от правого края макета (1920px) */
+  &.text1 { right: 90px; top: 850px; }
+  &.text2 { right: 90px; top: 885px; }
+  &.text3 { right: 90px; top: 920px; }
+  &.info777 { right: 90px; top: 955px; }
 `
 
 const StyledCTALine = styled.div`
@@ -450,13 +458,12 @@ const StyledProductSpec = styled.div`
   z-index: 9;
 
   &.title1 { left: 70px; top: 1734px; font-size: 24px; font-weight: 400; }
-  &.brand1 { left: 521px; top: 1731px; font-size: 24px; font-weight: 400; }
+  &.brand1 { right: 1312px; top: 1731px; font-size: 24px; font-weight: 400; }
   &.text1 { left: 70px; top: 1786px; font-size: 15px; font-weight: 400; }
-  &.text2 { left: 576px; top: 1786px; font-size: 15px; font-weight: 400; }
+  &.text2 { right: 1312px; top: 1786px; font-size: 15px; font-weight: 400; }
   
-  &.title2 { width: 390px; left: 933px; top: 1964px; font-size: 24px; font-weight: 400; }
-  &.brand2 { width: 213px; left: 827px; top: 1964px; font-size: 24px; font-weight: 400; }
-  &.text3 { left: 1065px; top: 2022px; font-size: 15px; font-weight: 400; }
+  &.title2 { width: auto; right: 803px; top: 1964px; font-size: 24px; font-weight: 400; }
+  &.text3 { width: auto; right: 803px; top: 2022px; font-size: 15px; font-weight: 400; }
   
   &.title3 { width: 173px; height: 33px; left: 1165px; top: 1961px; font-size: 24px; font-weight: 400; color: #E2E2E2; }
   &.brand3 { width: 96px; height: 30px; left: 1685px; top: 1961px; font-size: 24px; font-weight: 400; color: #E2E2E2; }
@@ -954,7 +961,7 @@ const StyledDecorativeLine = styled.div`
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
 
-  &.h-line-1 { width: 1300px; left: 70px; top: 1245px; }
+  &.h-line-1 { width: 1920px; left: 70px; top: 1245px; }
   &.h-line-2 { width: 1010px; left: 70px; top: 1370px; }
   &.bolaite-line-18 { width: 2320px; left: 1282px; top: 3947px; transform: rotate(90deg); transform-origin: top left; }
   
@@ -1240,9 +1247,10 @@ const Frame10 = () => {
       <StyledCTATitle href="#request-form">ОСТАВИТЬ ЗАЯВКУ</StyledCTATitle>
       <StyledCTALine />
 
-      <StyledCTAText className="text1">Text text text text text text text text Text text text text text</StyledCTAText>
-      <StyledCTAText className="text2">Text text text text text text text text Text</StyledCTAText>
-      <StyledCTAText className="text3">Text text text text text text text text Text</StyledCTAText>
+      <StyledCTAText className="text1">Наша компания — надежный партнер в поставках продукции Bolaite.</StyledCTAText>
+      <StyledCTAText className="text2">Производство, заслужившее доверие клиентов,</StyledCTAText>
+      <StyledCTAText className="text3">широкое признание</StyledCTAText>
+      <StyledCTAText className="info777">и высокие оценки на рынке.</StyledCTAText>
 
       <StyledDecorativeLine className="h-line-1" />
       <StyledDecorativeLine className="h-line-2" />
@@ -1299,16 +1307,15 @@ const Frame10 = () => {
       <StyledProductDesc className="desc3">для клиентов ценящих качество</StyledProductDesc>
       <StyledProductDesc className="desc4">Выберите свой компрессор</StyledProductDesc>
 
-      <StyledProductSpec className="title1">Bltopm 10 +75</StyledProductSpec>
-      <StyledProductSpec className="brand1">Ubitech</StyledProductSpec>
-      <StyledProductSpec className="text1">text</StyledProductSpec>
-      <StyledProductSpec className="text2">text</StyledProductSpec>
+      <StyledProductSpec className="title1">Bltopm 10-175</StyledProductSpec>
+      <StyledProductSpec className="brand1">Liutech LUY050-7</StyledProductSpec>
+      <StyledProductSpec className="text1">Масляный компрессор</StyledProductSpec>
+      <StyledProductSpec className="text2">Дизельный компрессор</StyledProductSpec>
 
-      <StyledProductSpec className="title2">Bltopm 10 +75</StyledProductSpec>
-      <StyledProductSpec className="brand2">Ubitech</StyledProductSpec>
-      <StyledProductSpec className="text3">text</StyledProductSpec>
+      <StyledProductSpec className="title2">Bolaite SPR oil-free scroll</StyledProductSpec>
+      <StyledProductSpec className="text3">Безмаслянный воздушный компрессор</StyledProductSpec>
 
-      <StyledProductSpec className="title3">Bltopm 10 +75</StyledProductSpec>
+      <StyledProductSpec className="title3">Bltopm 10-175</StyledProductSpec>
       <StyledProductSpec className="brand3">Ubitech</StyledProductSpec>
       <StyledProductSpec className="text4">text</StyledProductSpec>
       <StyledProductSpec className="text5">text</StyledProductSpec>
