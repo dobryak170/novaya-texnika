@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4315
@@ -213,9 +212,9 @@ const StyledCategoryList = styled.div`
   z-index: 11;
 `
 
-const StyledCategoryItem = styled(Link)` // Теперь это сразу ссылка!
+const StyledCategoryItem = styled(Link)`
   font-family: Inter, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   color: #575757;
   text-align: right;
@@ -224,21 +223,22 @@ const StyledCategoryItem = styled(Link)` // Теперь это сразу сс�
   display: flex;
   align-items: flex-start;
   white-space: nowrap;
-  text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
   
+  /* Убираем оформление стандартной ссылки */
+  text-decoration: none; 
   cursor: pointer;
-  transition: all 0.2s ease;
+  z-index: 100;
   position: relative;
-  z-index: 10; /* Поднимаем выше линий, чтобы точно кликалось */
 
+  /* Эффект при наведении */
   &:hover {
-    opacity: 0.7;
     color: #03043c;
+    opacity: 0.8;
   }
 
   &.active { 
     color: #03043c; 
-    font-weight: bold;
+    font-weight: 500; /* Делаем активный пункт еще жирнее */
   }
 `;
 
@@ -637,7 +637,7 @@ const formatPhoneNumber = (value) => {
   return `+7 (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9, 11)}`
 }
 
-const CatalogPage = () => {
+const AirTreatment = () => {
   const { pathname } = useLocation()
   const [scale, setScale] = useState(() => window.innerWidth / DESIGN_WIDTH)
   const [formName, setFormName] = useState('')
@@ -1023,4 +1023,4 @@ const CatalogPage = () => {
   )
 }
 
-export { CatalogPage as default }
+export { AirTreatment as default }

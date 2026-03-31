@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
+import { useLocation, Link } from 'react-router-dom'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4319
@@ -220,9 +220,9 @@ const StyledCategoryList = styled.div`
   z-index: 11;
 `
 
-const StyledCategoryItem = styled.span`
+const StyledCategoryItem = styled(Link)`
   font-family: Inter, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   color: #575757;
   text-align: right;
@@ -231,9 +231,24 @@ const StyledCategoryItem = styled.span`
   display: flex;
   align-items: flex-start;
   white-space: nowrap;
+  
+  /* Убираем оформление стандартной ссылки */
+  text-decoration: none; 
+  cursor: pointer;
+  z-index: 100;
+  position: relative;
 
-  &.active { color: #000f46; }
-`
+  /* Эффект при наведении */
+  &:hover {
+    color: #03043c;
+    opacity: 0.8;
+  }
+
+  &.active { 
+    color: #03043c; 
+    font-weight: 500; /* Делаем активный пункт еще жирнее */
+  }
+`;
 
 // ─── Equipment Labels ─────────────────────────────────────────────────────────
 
@@ -730,16 +745,31 @@ const PortablePage = () => {
 
           {/* ── Category Nav ── */}
           <StyledCategoryList>
-            <StyledCategoryItem className={pathname === '/products/oil-injected' ? 'active' : ''}>
+            <StyledCategoryItem 
+              to="/products/oil-injected" 
+              className={pathname === '/products/oil-injected' ? 'active' : ''}
+            >
               ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/oil-free' ? 'active' : ''}>
+
+            <StyledCategoryItem 
+              to="/products/oil-free" 
+              className={pathname === '/products/oil-free' ? 'active' : ''}
+            >
               БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/portable' ? 'active' : ''}>
+
+            <StyledCategoryItem 
+              to="/products/portable" 
+              className={pathname === '/products/portable' ? 'active' : ''}
+            >
               ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/air-treatment' ? 'active' : ''}>
+
+            <StyledCategoryItem 
+              to="/products/air-treatment" 
+              className={pathname === '/products/air-treatment' ? 'active' : ''}
+            >
               ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА
             </StyledCategoryItem>
           </StyledCategoryList>

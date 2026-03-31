@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import SeoHead from './components/SeoHead'
 import Frame10 from './components/Frame10'
 import Frame4 from './components/Frame4'
-import CatalogPage from './components/CatalogPage'
+import AirTreatment from './components/AirTreatment.jsx'
 import ProductsPage from './components/ProductsPage'
 import ScrewCompressorsPage from './components/ScrewCompressorsPage' // ПРОВЕРЬ ЭТУ СТРОКУ
 import OilFreePage from './components/OilFreePage'
@@ -85,7 +85,7 @@ function App() {
   <Route path="/products/oil-injected" element={<ScrewCompressorsPage />} /> 
   <Route path="/products/oil-free" element={<OilFreePage />} />
   <Route path="/products/portable" element={<PortablePage />} />
-  <Route path="/products/air-treatment" element={<CatalogPage />} />
+  <Route path="/products/air-treatment" element={<AirTreatment />} />
   
   <Route path="/about" element={<AboutPage />} />
   <Route path="*" element={<NotFound />} />
