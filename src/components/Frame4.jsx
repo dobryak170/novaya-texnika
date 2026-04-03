@@ -341,8 +341,8 @@ const StyledWideChoiceText = styled.p`
 
 const StyledContactButtonDot = styled.div`
   position: absolute;
-  left: -3px;
-  top: -3px;
+  left: -4px;
+  top: -4px;
   width: 8px;
   height: 8px;
   background: white;
