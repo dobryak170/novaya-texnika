@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Header from './Header'
 import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
+import { useLocation, Link } from 'react-router-dom'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4320
@@ -200,16 +201,19 @@ const StyledContactBoxVLine = styled.div`
   &.right { top: 1004px; left: 1318px; height: 67px; }
 `
 
-const StyledDot = styled.div`
+const StyledDot = styled.svg`
   position: absolute;
-  width: 8px;
-  height: 8px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #9c9e9d;
-  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
   z-index: 150;
-`
+  pointer-events: none;
+  /* Центрируем точку, чтобы она сидела СЕРЕДИНОЙ на линии */
+  transform: translate(-50%, -50%); 
+  overflow: visible;
+`;
+
 
 // ─── Hero / Intro ─────────────────────────────────────────────────────────────
 
@@ -616,35 +620,38 @@ const StyledFooterText = styled.p`
 // ─── Dots ─────────────────────────────────────────────────────────────────────
 
 const DOT_POSITIONS = [
-  { top: 1067, left: 1316 },
-  { top: 1067, left: 1116 },
-  { top: 1001, left: 1316 },
-  { top: 1001, left: 1116 },
-  { top: 12,   left: 27   },
-  { top: 86,   left: 27   },
-  { top: 12,   left: 545  },
-  { top: 86,   left: 545  },
-  { top: 12,   left: 840  },
-  { top: 86,   left: 840  },
-  { top: 12,   left: 1115 },
-  { top: 86,   left: 1115 },
-  { top: 12,   left: 1315 },
-  { top: 86,   left: 1315 },
-  { top: 12,   left: 1885 },
-  { top: 86,   left: 1885 },
-  /* section-1: боковые полосы (линия 1070px) */
-  { top: 1067, left: 27   },
-  { top: 1067, left: 1885 },
+  { top: 15, left: 31  },
+  { top: 90, left: 31  },
+  { top: 15, left: 549 },
+  { top: 90, left: 548 },
+  { top: 15, left: 845 },
+  { top: 90, left: 845 },
+  { top: 15, left: 1118 },
+  { top: 90, left: 1118 },
+  { top: 15, left: 1318 },
+  { top: 90, left: 1318 },
+  { top: 15, left: 1888 },
+  { top: 90, left: 1888 },
+  //header
+
+  /* section-1: боковые полосы (линия 1064px) */
+  { top: 1005, left: 1118 },
+  { top: 1071, left: 1118 },
+  { top: 1005, left: 1318 },
+  { top: 1071, left: 1318 },
+  { top: 1071, left: 31   },
+  { top: 1071, left: 1888 },
+
   /* section-2: боковые + пересечение с VDivider4 1318px (линия 2145px) */
-  { top: 2142, left: 27   },
-  { top: 2142, left: 1315 },
-  { top: 2142, left: 1885 },
+  { top: 2145, left: 31   },
+  { top: 2145, left: 1888 },
+
   /* section-3: только боковые полосы (внутренние вертикали не доходят до 3220px) */
-  { top: 3217, left: 27   },
-  { top: 3217, left: 1885 },
+  { top: 3220, left: 31   },
+  { top: 3220, left: 1888 },
   /* bottom line (4199px): боковые полосы */
-  { top: 4195.5, left: 26.5   },
-  { top: 4195.5, left: 1884.5 },
+  { top: 4199, left: 31   },
+  { top: 4199, left: 1888 },
 ]
 
 const IMG = (name) => `/images/aboutus/${name}`
@@ -757,9 +764,27 @@ const AboutPage = () => {
           <StyledContactBoxVLine className="left" />
           <StyledContactBoxVLine className="right" />
 
-          {DOT_POSITIONS.map((pos, i) => (
-            <StyledDot key={i} style={{ top: pos.top, left: pos.left }} />
-          ))}
+        {DOT_POSITIONS.map((pos, i) => (
+          <StyledDot 
+            key={i} 
+            /* Используем Math.round, чтобы убрать .5 и сделать точку четкой */
+            style={{ 
+              top: `${Math.round(pos.top)}px`, 
+              left: `${Math.round(pos.left)}px` 
+            }} 
+            viewBox="0 0 6 6"
+          >
+            {/* Рисуем сам белый кружок внутри SVG-контейнера */}
+            <circle 
+              cx="3" 
+              cy="3" 
+              r="2.5" 
+              fill="white" 
+              stroke="#9C9E9D" 
+              strokeWidth="1" 
+            />
+          </StyledDot>
+        ))}
 
           {/* ── Header ── */}
           <Header />
