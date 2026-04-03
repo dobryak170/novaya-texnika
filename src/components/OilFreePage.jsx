@@ -671,8 +671,8 @@ const DOT_POSITIONS = [
   { top: 3220, left: 1749 },
   { top: 3220, left: 1889 },
   /* section-4 / section-5 × боковые полосы (центр 8px-точки на пересечении) */
-  { top: 4307, left: 31  },
-  { top: 4307, left: 1889 },
+  { top: 4199, left: 31  },
+  { top: 4199, left: 1889 },
   { top: 5269, left: 31   },
   { top: 5269, left: 1889 },
 ]

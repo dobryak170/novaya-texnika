@@ -154,16 +154,19 @@ const StyledContactBoxVLine = styled.div`
   &.right { top: 995px; left: 844px; height: 76px; }
 `
 
-const StyledDot = styled.div`
+const StyledDot = styled.svg`
   position: absolute;
-  width: 8px;
-  height: 8px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #9c9e9d;
-  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
   z-index: 150;
-`
+  pointer-events: none;
+  /* Центрируем точку, чтобы она сидела СЕРЕДИНОЙ на линии */
+  transform: translate(-50%, -50%); 
+  overflow: visible;
+`;
+
 
 const StyledHeroImage = styled.img`
   position: absolute;
@@ -580,41 +583,50 @@ const StyledFooterAddress = styled.address`
 `
 
 const DOT_POSITIONS = [
-  { top: 86.5, left: 26.5  },
-  { top: 11.5, left: 26.5  },
-  { top: 11.5, left: 544.5 },
-  { top: 11.5, left: 840.5 },
-  { top: 86.5, left: 840.5 },
-  { top: 86.5, left: 1114.5 },
-  { top: 11.5, left: 1114.5 },
-  { top: 11.5, left: 1314.5 },
-  { top: 86.5, left: 1314.5 },
-  { top: 86.5, left: 1884.5 },
-  { top: 11.5, left: 1884.5 },
-  { top: 86.5, left: 544.5  },
-  { top: 627,  left: 840  },
-  { top: 697,  left: 1088 },
-  { top: 767,  left: 1256 },
-  { top: 1068, left: 545  },
-  { top: 1068, left: 841  },
-  { top: 991,  left: 841  },
-  { top: 1068, left: 27   },
-  { top: 2155, left: 27   },
-  { top: 2155, left: 545  },
-  { top: 2155, left: 840  },
-  { top: 3227, left: 27   },
-  { top: 3227, left: 545  },
-  { top: 4203, left: 27   },
-  { top: 1068, left: 1885 },
-  { top: 2155, left: 1885 },
-  { top: 3227, left: 1885 },
-  { top: 4203, left: 1885 },
-  { top: 562,  left: 545  },
-  { top: 991,  left: 545  },
-  /* левый конец линии filter-1 (top 2514px, left 795px, width 1095px) */
-  { top: 2510, left: 792 },
-  /* правый конец линии filter-2 (top 3084px, left 550px, width 165px) */
-  { top: 3081, left: 712 },
+  { top: 15, left: 31  },
+  { top: 90, left: 31  },
+  { top: 15, left: 549 },
+  { top: 90, left: 548 },
+  { top: 15, left: 845 },
+  { top: 90, left: 845 },
+  { top: 15, left: 1118 },
+  { top: 90, left: 1118 },
+  { top: 15, left: 1318 },
+  { top: 90, left: 1318 },
+  { top: 15, left: 1888 },
+  { top: 90, left: 1888 },
+//header
+
+  { top: 565,  left: 549  },
+  { top: 630,  left: 845  },
+  { top: 701,  left: 1088 },
+  { top: 770,  left: 1256 },
+  { top: 994,  left: 549  },
+  { top: 1071, left: 549  },
+  { top: 994,  left: 845  },
+  { top: 1071, left: 845  },
+  
+  /* section-1: боковые полосы (линия 1064px) */
+  { top: 1071, left: 31   },
+  { top: 1071, left: 1888 },
+  
+  //section-2: боковые полосы (линия 2158px)
+  { top: 2158, left: 31   },
+  { top: 2158, left: 1888 },
+
+  /* левый конец линии */
+  { top: 2514, left: 792 },
+  /* правый конец линии*/
+  { top: 3085, left: 713 },
+
+  //section-3: боковые полосы (линия 3227px)
+  { top: 3230, left: 31   },
+  { top: 3230, left: 1888 },
+
+  //footer
+  { top: 4206, left: 31   },
+  { top: 4206, left: 1888 },
+
 ]
 
 const capitalizeFirst = (str) => {
@@ -726,9 +738,28 @@ const AirTreatment = () => {
           <StyledContactBoxVLine className="left" />
           <StyledContactBoxVLine className="right" />
 
-          {DOT_POSITIONS.map((pos, i) => (
-            <StyledDot key={i} style={{ top: pos.top, left: pos.left }} />
-          ))}
+        {DOT_POSITIONS.map((pos, i) => (
+          <StyledDot 
+            key={i} 
+            /* Используем Math.round, чтобы убрать .5 и сделать точку четкой */
+            style={{ 
+              top: `${Math.round(pos.top)}px`, 
+              left: `${Math.round(pos.left)}px` 
+            }} 
+            viewBox="0 0 6 6"
+          >
+            {/* Рисуем сам белый кружок внутри SVG-контейнера */}
+            <circle 
+              cx="3" 
+              cy="3" 
+              r="2.5" 
+              fill="white" 
+              stroke="#9C9E9D" 
+              strokeWidth="1" 
+            />
+          </StyledDot>
+        ))}
+
 
           <Header />
 
@@ -756,30 +787,34 @@ const AirTreatment = () => {
           </StyledHeroSubtext>
 
           <StyledCategoryList>
-            <Link to="/products/oil-injected" style={{ textDecoration: 'none' }}>
-              <StyledCategoryItem className={pathname === '/products/oil-injected' ? 'active' : ''}>
-                ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
-              </StyledCategoryItem>
-            </Link>
+            <StyledCategoryItem 
+              to="/products/oil-injected" 
+              className={pathname === '/products/oil-injected' ? 'active' : ''}
+            >
+              ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
+            </StyledCategoryItem>
 
-            <Link to="/products/oil-free" style={{ textDecoration: 'none' }}>
-              <StyledCategoryItem className={pathname === '/products/oil-free' ? 'active' : ''}>
-                БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
-              </StyledCategoryItem>
-            </Link>
+            <StyledCategoryItem 
+              to="/products/oil-free" 
+              className={pathname === '/products/oil-free' ? 'active' : ''}
+            >
+              БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
+            </StyledCategoryItem>
 
-            <Link to="/products/portable" style={{ textDecoration: 'none' }}>
-              <StyledCategoryItem className={pathname === '/products/portable' ? 'active' : ''}>
-                ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
-              </StyledCategoryItem>
-            </Link>
+            <StyledCategoryItem 
+              to="/products/portable" 
+              className={pathname === '/products/portable' ? 'active' : ''}
+            >
+              ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
+            </StyledCategoryItem>
 
-            <Link to="/products/air-treatment" style={{ textDecoration: 'none' }}>
-              <StyledCategoryItem className={pathname === '/products/air-treatment' ? 'active' : ''}>
-                ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА
-              </StyledCategoryItem>
-            </Link>
-            </StyledCategoryList>
+            <StyledCategoryItem 
+              to="/products/air-treatment" 
+              className={pathname === '/products/air-treatment' ? 'active' : ''}
+            >
+              ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА
+            </StyledCategoryItem>
+          </StyledCategoryList>
 
           <StyledEquipmentLabel className="main">ОБОРУДОВАНИЕ</StyledEquipmentLabel>
           <StyledEquipmentLabel className="sub">ДЛЯ ОЧИСТКИ ВОЗДУХА</StyledEquipmentLabel>
