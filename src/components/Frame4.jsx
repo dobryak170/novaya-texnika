@@ -414,16 +414,25 @@ const StyledProductCell = styled.div`
 
 const StyledProductImage = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  /* Уменьшаем высоту самой картинки, чтобы сверху и снизу 
+     появилось то самое пространство из макета */
+  height: 80%; 
+  
+  /* contain гарантирует, что пропорции НЕ исказятся (как просила заказчица), 
+     и товар целиком влезет в рамку */
+  object-fit: contain; 
+  object-position: center;
+
+  /* Увеличиваем padding, чтобы отодвинуть товар от серых линий */
+  padding: 60px 40px; 
+  box-sizing: border-box;
+
+  /* Центрируем блок картинки вертикально внутри ячейки */
+  display: block;
+  margin: auto; 
+
   border: none;
   outline: none;
-  display: block;
-  transition: transform 0.4s ease;
-
-  &:hover {
-    transform: scale(1.07);
-  }
 `
 
 const StyledDustPreventionText = styled.p`
